@@ -1,0 +1,119 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  # - trigger: ":date"
+  #  replace: "{{mydate}}"
+  #  vars:
+  #    - name: mydate
+  #      type: date
+  #      params:
+  #        format: "%m/%d/%Y"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+
+
+
+  # ^^ BUILT IN ^^ ////////////////////////////////////////
+  # ⌄⌄ CUSTOM ⌄⌄ ////////////////////////////////////////
+
+  # emails
+  - trigger: "/no"
+    replace: "nitrogeo@outlook.com"
+
+  - trigger: "/fg"
+    replace: "froxgames@outlook.com"
+
+  - triggers: 
+    - "/hc"
+    - "/hb"
+    replace: "honeycombburrow@gmail.com"
+
+  - trigger: "/nf"
+    replace: "nitrofrox@gmail.com"
+
+  - trigger: "/na"
+    replace: "nitro.apps@outlook.com"
+  - trigger: "/e2"
+    replace: "e2squared78@outlook.com"
+
+
+  # school email + username
+  - trigger: "/ke"
+    replace: "K1404887@students.katyisd.org"
+  - trigger: "/kn"
+    replace: "K1404887"
+
+
+
+  # emojis
+  - triggers: 
+    - "/:sob"
+    - "/:SOB"
+    replace: "😭"
+  - trigger: "/:rose"
+    replace: "🥀"
+  - trigger: "/:pray"
+    replace: "🙏"
+  - trigger: "/:pen"
+    replace: "😔"
+  - trigger: ":vro"
+    replace: "😭🙏🥀"
+  - trigger: ":TwT"
+    replace: "😭"
+  - trigger: ":twt"
+    replace: "😭"
+
+  # commands
+  - trigger: "/shutdown"
+    replace: "sudo systemctl shutdown"
+  - trigger: "/neofetch"
+    replace: "fastfetch"
+  - trigger: "/nano"
+    replace: "subl"
+  - trigger: "/clean"
+    replace: "./scripts/clean-arch.sh"
+  - trigger: "/cr"
+    replace: "clear"
+
+  # dyanmic
+  - trigger: ":now"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%H:%M%p"
+
+
+
+
+
+
