@@ -41,8 +41,7 @@ echo -e "${MAGENTA}--- Current Git Status (What's changed in your repo) ---${NC}
 cd "$TARGET" || exit
 cd "$TARGET" || { echo "❌ Error: Could not find $TARGET"; exit 1; }
 git status -s
-echo -e "${MAGENTA}-------------------------------------------------------${NC}"
-
+echo -e "${MAGENTA}--------------------------------------------------------${NC}"
 
 
 
