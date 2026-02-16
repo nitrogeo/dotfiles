@@ -110,6 +110,7 @@ case $push_method in
         
         echo -e "${YELLOW}Add description? (y/n)${NC}"
         read -r add_desc
+        echo ""
         
         git add .
         if [[ "$add_desc" == "y" ]]; then
