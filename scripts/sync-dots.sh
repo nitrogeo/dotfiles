@@ -43,6 +43,13 @@ cd "$TARGET" || { echo "❌ Error: Could not find $TARGET"; exit 1; }
 git status -s
 echo -e "${MAGENTA}--------------------------------------------------------${NC}"
 
+# 1.5. THE DIFF VIEW (The "What's changed" summary)
+# NOTE - kitty uses "less" for this and idk how to use it so whatever lol
+# echo -e "\n${BLUE}--- Summary of Changes ---${NC}"
+# git diff --stat
+# echo -e "${MAGENTA}----------------------------------------${NC}"
+
+
 
 
 # 2. ASK TO COPY FILES
