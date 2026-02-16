@@ -13,6 +13,10 @@ NC='\033[0m' # No Color
 # Target directory (where your GitHub repo is) - must use the full path to avoid tilde (~) expansion issues
 TARGET="/home/nitro/Documents/[1] developer + git~/dotfiles"
 
+# --- Credential Safety Check ---
+if [[ $(git config --get credential.helper) == "" ]]; then
+    echo -e "${ORANGE}💡 Tip: Run 'git config --global credential.helper store' to remember your login!${NC}"
+fi
 
 
 # 1. SMART STATUS CHECK
