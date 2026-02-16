@@ -1,0 +1,1 @@
+will add more organized notes on fixes later!
