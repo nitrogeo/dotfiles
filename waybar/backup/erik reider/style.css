@@ -1,0 +1,197 @@
+/*
+ * vim: ft=less
+ */
+
+@define-color bg-hover rgba(65, 65, 65, 0.7);
+@define-color text-color white;
+@define-color text-color-disabled rgba(255, 255, 255, 0.4);
+@define-color accent-color rgb(0, 128, 255);
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Adwaita Sans", "CommitMono Nerd Font Propo";
+  font-size: 17px;
+  font-weight: bold;
+  min-height: 0;
+}
+
+label {
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.56);
+}
+
+tooltip {
+  border-radius: 18px;
+  background: rgba(46, 46, 46, 0.7);
+}
+
+image {
+  -gtk-icon-style: symbolic;
+  -gtk-icon-shadow: 0 4px 6px rgba(0, 0, 0, 0.56);
+}
+
+window#waybar {
+  /* background: white; */
+  color: @text-color;
+  transition-property: background-color;
+  transition-property: color;
+  transition-duration: 0.25s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+window {
+  background: transparent;
+  border-radius: 0;
+}
+
+window > box {
+  /*
+   * https://larsenwork.com/easing-gradients/#editor
+   * linear-gradient(
+   *   to bottom,
+   *   hsla(330, 0%, 0%, 0.5),
+   *   cubic-bezier(0, 0, 0.75, 1),
+   *   hsla(210, 0%, 100%, 0)
+   * );
+   */
+   /* background: #24273a; */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.494) 1%,
+    rgba(0, 0, 0, 0.476) 3.7%,
+    rgba(0, 0, 0, 0.448) 8%,
+    rgba(0, 0, 0, 0.412) 13.6%,
+    rgba(0, 0, 0, 0.37) 20.4%,
+    rgba(0, 0, 0, 0.324) 28%,
+    rgba(0, 0, 0, 0.275) 36.3%,
+    rgba(0, 0, 0, 0.225) 45%,
+    rgba(0, 0, 0, 0.176) 54%,
+    rgba(0, 0, 0, 0.13) 63%,
+    rgba(0, 0, 0, 0.088) 71.7%,
+    rgba(0, 0, 0, 0.052) 80%,
+    rgba(0, 0, 0, 0.024) 87.6%,
+    rgba(0, 0, 0, 0.006) 94.4%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background-clip: border-box;
+}
+
+/* All module containers */
+window > box > box {
+  padding: 0 8px;
+}
+
+/* All modules */
+window > box > box > widget > * {
+  padding: 4 8px;
+}
+
+window > box > box > widget > button:hover {
+  background: @bg-hover;
+}
+
+.modules-left {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.modules-right {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+window > box > box > widget button:insensitive {
+  color: @text-color;
+  font-weight: bold;
+}
+
+#workspaces button {
+  /* padding: 0 10px; */
+  background-color: transparent;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  color: @text-color;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button.visible,
+#workspaces button:hover {
+  box-shadow: inset 0 -2px #555555;
+}
+
+#workspaces button:hover {
+  background: @bg-hover;
+}
+
+#workspaces button.focused {
+  box-shadow: inset 0 -2px @accent-color;
+}
+
+#workspaces button.urgent {
+  color: #bd2c40;
+  box-shadow: inset 0 -2px #bd2c40;
+}
+
+#gamemode {
+  color: @text-color-disabled;
+}
+#gamemode.running {
+  color: @text-color;
+}
+
+#backlight {
+  background-color: #90b1b1;
+}
+
+#custom-airplane {
+  font-size: 24px;
+}
+
+#bluetooth {
+  font-size: 22px;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+  color: @text-color-disabled;
+}
+
+#network {
+  font-size: 22px;
+}
+#network.wifi {
+  font-family: "Material Icons Round";
+}
+
+#network.disconnected,
+#network.disabled,
+#network.linked {
+  color: @text-color-disabled;
+}
+
+#pulseaudio.muted {
+  color: @text-color-disabled;
+}
+
+#privacy {
+}
+#privacy-item {
+  margin: 2px 0;
+  padding: 0 16px;
+  color: @text-color;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+#privacy-item.screenshare {
+  background: #30c658;
+}
+#privacy-item.audio-in {
+  background: #ffa915;
+}
+#privacy-item.audio-out {
+  background: #1c71d8;
+}
