@@ -106,6 +106,8 @@ matches:
     replace: "./scripts/sync-dots.sh"
   - trigger: "/ff"
     replace: "fastfetch"
+  - trigger: "/fe"
+    replace: "yazi"
 
   # dyanmic
   - trigger: ":now"
