@@ -6,6 +6,9 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 30, // originally 20
+
+    "spacing": 4,
+
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["mpris"],
     "modules-right": ["cpu", "memory", "pulseaudio","pulseaudio#microphone", "battery", "network", "clock", "tray", "custom/swaync"],
@@ -44,7 +47,7 @@
     },
 
     "clock": {
-        "format": "󰃰  {:%a %d %b %I:%M %p}",
+        "format": "󰃰  {:%a %b %d   %I:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
@@ -124,6 +127,7 @@
       "interval":1,
       "album-len":0,
       "max-len": 60,
+
       "format": "{player_icon} {artist} - {title}",
       "format-paused": "{player_icon} {artist} - {title}",
       "player-icons": {
@@ -188,14 +192,14 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
-            "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-none": "",
-            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-inhibited-none": ""
+            "notification": "<span><sup></sup></span>", // Dot remains for active alerts
+            "none": "", // Clean icon (No Dot)
+            "dnd-notification": "<span><sup></sup></span>",
+            "dnd-none": "", // Clean icon (No Dot)
+            "inhibited-notification": "<span><sup></sup></span>",
+            "inhibited-none": "", // Clean icon (No Dot)
+            "dnd-inhibited-notification": "<span><sup></sup></span>",
+            "dnd-inhibited-none": "" // Clean icon (No Dot)
         },
         "return-type": "json",
         "exec-if": "which swaync-client",

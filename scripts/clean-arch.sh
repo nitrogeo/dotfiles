@@ -98,12 +98,12 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 
 
 
-    read -p "Do you want to remove da Bwave and Spotify caches UwU? (y/n): " app_cache_confirm
+    read -p "Do you want to remove da Spotify cache UwU? (y/n): " app_cache_confirm
         if [[ $app_cache_confirm == [yY] || $app_cache_confirm == [yY][eE][sS] ]]; then
             # 4. Clear App Caches
-            echo "Clearing Brave and Spotify caches..."
+            echo "Clearing Spotify caches..."
             rm -rf ~/.cache/spotify/*
-            rm -rf ~/.cache/BraveSoftware
+            # rm -rf ~/.cache/BraveSoftware
             # rm -rf ~/.cache/mozilla/firefox/*.default-release/cache2/*
 
             echo ""

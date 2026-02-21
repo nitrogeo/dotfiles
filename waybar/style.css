@@ -1,15 +1,17 @@
 /* style.css */
 * {
     font-family: "Inter Medium", "Symbols Nerd Font", "sans-serif;"; /* Choose your fonts */
-    font-size: 15px;
+    font-size: 12px;
     color: #f0f0f0; /* Light text color */
 }
 
 window#waybar {
     background-color: rgba(40, 40, 40, 0.8); /* Semi-transparent dark background // orignally 20 20 20 0.8 */
     border-radius: 10px; /* Rounded corners */
-    padding: 5px;
-    margin: 5px;
+    /* padding: 5px; */
+    /* margin: 5px; */
+    margin: 0px 5px 5px 5px; /* Top margin must be 0 to align with the reserved zone */
+    padding: 2px 5px; /* Reduce padding so it doesn't feel too bulky */
 }
 
 #waybar > * {
@@ -104,4 +106,8 @@ window#waybar {
     color: #c6a0f6; /* Catppuccin Mauve to match your active workspace */
     padding: 0px 10px;
     font-size: 18px;
+}
+/* This targets the dot (the span) inside the widget */
+#custom-swaync > priv-text > span {
+    color: #ed8796; /* Catppuccin Red */
 }
