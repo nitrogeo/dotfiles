@@ -15,8 +15,8 @@ window#waybar {
 }
 
 #waybar > * {
-    padding: 0px 10px; /* Spacing between modules */
-    margin-top: 5px;
+    padding: 0px 15px; /* Spacing between modules */
+    margin-top: 0px;
 }
 
 #waybar > module {
