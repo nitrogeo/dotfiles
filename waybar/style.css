@@ -1,7 +1,7 @@
 /* style.css */
 * {
     font-family: "Inter Medium", "Symbols Nerd Font", "sans-serif;"; /* Choose your fonts */
-    font-size: 12px;
+    font-size: 11px;
     color: #f0f0f0; /* Light text color */
 }
 
@@ -75,20 +75,41 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 1px 8px;
+    padding: 0px 3px;
+    margin: 0px 3px;
     color: #cad3f5; /* Catppuccin Text */
     background-color: transparent;
     /* This creates the space for the indicator */
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
+
+    border-radius: 8px;
+}
+
+/* This targets the window icons ({windows}) specifically */
+#workspaces button label {
+    padding: 0px 2px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.occupied {
+    color: #c6a0f6; /* Subtle indicator that windows are open */
 }
 
 /* This targets the current workspace on EACH monitor */
 #workspaces button.active {
-    color: #c6a0f6; /* Catppuccin Mauve */
+    color: #3c3c3c;
+    /* color: #c6a0f6;*/  /* Catppuccin Mauve */
+    background-color: #c9a9f2;
     /* background-color: rgba(138, 160, 246, 0.45);*/ /* Subtle transparency */
-    background-color: #aa7be3;
     /* border-bottom: 3px solid #c6a0f6; */
+    border-radius: 8px;       /* Keep your rounded look */
+    /* font-weight: bold; */        /* Makes the indicator clearer - commented bc of lag when switching*/
+}
+
+/* Optional: styling the window icons specifically when the workspace is active */
+#workspaces button.active label {
+    color: #3c3c3c;
 }
 
 #workspaces button.urgent {
@@ -97,7 +118,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background-color: #915ccd;
+    background-color: #9a85b3;
 }
 
 
@@ -111,3 +132,32 @@ window#waybar {
 #custom-swaync > priv-text > span {
     color: #ed8796; /* Catppuccin Red */
 }
+
+
+
+
+#mpris {
+    padding: 0px 15px;      /* Adds horizontal breathing room */
+    margin: 0px 10px;       /* Adds space between music and other modules */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle background pod */
+    border-radius: 10px;
+    color: #c6a0f6;         /* Matches your Mauve workspace color */
+}
+#clock {
+    padding: 0px 10px;      /* Adds horizontal breathing room */
+    margin: 0px 7px;       /* Adds space between music and other modules */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle background pod */
+    border-radius: 10px;
+}
+
+#taskbar button {
+    padding: 0px 5px;
+    margin: 0px 2px;
+}
+
+#taskbar button.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid #c6a0f6; /* Bottom line indicator */
+}
+
+
