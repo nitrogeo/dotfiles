@@ -63,7 +63,6 @@ read -r sync_choice
 if [[ "$sync_choice" == "y" ]]; then
     # Ensure directories exist:
 	# Create subdirectories in the repo if they don't exist
-	
 	# rsync -avun would be a dry run. -a is archive, -v is verbose.
     # The --delete flag would remove files in TARGET that you deleted locally.
     rsync -a --exclude='.git' /home/nitro/.config/hypr/ "$TARGET/hypr/"
@@ -78,6 +77,7 @@ if [[ "$sync_choice" == "y" ]]; then
 	cp -a /home/nitro/.config/waybar/. "$TARGET/waybar/"
 	cp -a /home/nitro/.config/rofi/. "$TARGET/rofi/"
 	cp -a "/home/nitro/scripts/." "$TARGET/scripts"
+    cp -a "/home/nitro/.config/btop/." "$TARGET/btop/"
 
 	# Copy specific files
 	cp -a /home/nitro/.config/kitty/kitty.conf "$TARGET/kitty/"
