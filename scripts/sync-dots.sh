@@ -78,9 +78,9 @@ if [[ "$sync_choice" == "y" ]]; then
 	cp -a /home/nitro/.config/rofi/. "$TARGET/rofi/"
 	cp -a "/home/nitro/scripts/." "$TARGET/scripts"
     cp -a "/home/nitro/.config/btop/." "$TARGET/btop/"
+    cp -a "/home/nitro/.config/kitty/." "$TARGET/kitty/"
 
 	# Copy specific files
-	cp -a /home/nitro/.config/kitty/kitty.conf "$TARGET/kitty/"
 	cp -a /home/nitro/.config/espanso/match/base.yml "$TARGET/espanso/"
 
 	# Copy obsidian linux notes (wildcard (*) handles the quote eror)

@@ -46,6 +46,23 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
     # 1. Vacuum System Logs to 2 weeks
     # sudo journalctl --vacuum-time=2weeks
 
+    # reddit clear commands 3.3.20264
+    echo ""
+    # echo "############################"
+    echo "%%%%% Updating Flatpak and clearing unused dependencies..."
+    # echo "############################"
+    echo ""
+
+    flatpak update
+    flatpak uninstall --unused; flatpak repair
+
+    echo ""
+    # echo "############################"
+    echo "%%%%% Vaccuming journalctl..."
+    # echo "############################"
+    echo ""
+    sudo journalctl --vacuum-time=2weeks
+
 
     echo ""
     # echo "############################"
@@ -58,6 +75,8 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
     else
         sudo pacman -Sc --noconfirm
     fi
+    sudo paccache -rk1; sudo paccache -ruk0 # cleanup cache
+    sudo pacman -Rns $(pacman -Qdtq)        # cleanup orphans
 
 
     echo ""
