@@ -121,6 +121,17 @@ window#waybar {
     background-color: #9a85b3;
 }
 
+/* Targets the icons specifically within the workspace buttons */
+#workspaces button .taskbar-window {
+    /* padding: 0 4px; */
+    /* opacity: 0.6; */ /* Dim inactive windows in the tape */
+}
+
+#workspaces button .taskbar-window.active {
+    opacity: 1.0;
+    /* border-bottom: 2px solid #c9a9f2;*/ /* Highlight the current active window in the order */
+}
+
 
 
 #custom-swaync {

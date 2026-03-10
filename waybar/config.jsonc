@@ -32,23 +32,23 @@
     "format-icons": {"1":"1", "2" : "2", "3": "3", "4": "4","5": "5", "6": "6", "7": "7","8": "8","9": "9", "10": "10",
       "magic": "#"   // Renames the "magic" workspace
     },
-    // "all-outputs": true,
-    "on-click": "activate",
-    
 
-    /* new */
-    "special-ws-name": "sdf",
-
-    "all-outputs": false, // Change this to false for per-monitor views
-
-    "show-special": true,
     "format-window-separator": "|",
     "window-rewrite-default": "",
+
+    "all-outputs": false, // Change this to false for per-monitor views
+    // "all-outputs": true,
+    "on-click": "activate",
+    /* "special-ws-name": "sdf", */ /* ??? */
+    "show-special": true,
+    
+    
 
     "workspace-taskbar": {
       "enable": true,
       "update-active-window": false, // increases cpu usage
       "format": "{icon}",
+
       "icon-size": 16,
       "icon-theme": "Flat-Remix-Blue-Dark",
       "orientation": "horizontal",

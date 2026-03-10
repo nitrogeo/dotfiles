@@ -54,7 +54,8 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
     echo ""
 
     flatpak update
-    flatpak uninstall --unused; flatpak repair
+    flatpak uninstall --unused; 
+    # flatpak repair
 
     echo ""
     # echo "############################"
