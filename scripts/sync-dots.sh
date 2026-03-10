@@ -69,6 +69,8 @@ if [[ "$sync_choice" == "y" ]]; then
     rsync -a --exclude='.git' /home/nitro/.config/waybar/ "$TARGET/waybar/"
     rsync -a --exclude='.git' /home/nitro/.config/rofi/ "$TARGET/rofi/"
     rsync -a --exclude='.git' /home/nitro/scripts/ "$TARGET/scripts/"
+    rsync -a --exclude='.git' /etc/security/faillock.conf "$TARGET/security/"
+    rsync -a --exclude='.git' /home/nitro/.config/Modus/config/hypr/modus.conf "$TARGET/Modus/"
 
 
 	# Copy the files
@@ -80,8 +82,11 @@ if [[ "$sync_choice" == "y" ]]; then
     cp -a "/home/nitro/.config/btop/." "$TARGET/btop/"
     cp -a "/home/nitro/.config/kitty/." "$TARGET/kitty/"
 
+
 	# Copy specific files
 	cp -a /home/nitro/.config/espanso/match/base.yml "$TARGET/espanso/"
+    cp -a "/etc/security/faillock.conf" "$TARGET/security/"
+    cp -a "/home/nitro/.config/Modus/config/hypr/modus.conf" "$TARGET/Modus/"
 
 	# Copy obsidian linux notes (wildcard (*) handles the quote eror)
 	rsync -av "/home/nitro/Documents/[3] notes/@obsidian/nitro's obsidian~/github notes/." "$TARGET/notes/" 2>/dev/null || echo -e "${ORANGE}⚠️ Warning: Obsidian notes folder not found.${NC}"
