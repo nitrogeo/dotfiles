@@ -6,7 +6,8 @@ i use arch btw
 <br><br>
 
 ## screenshots
-![screenshot 3.7.2026](/.assets/setup%203.7.2026~.png)
+![setup as of 3.7.2026](/.assets/setup%203.7.2026~.png)
+![setup as of 3.11.2026](/.assets/setup%203.11.2026~.png)
 
 <br>
 
