@@ -65,32 +65,43 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
     sudo journalctl --vacuum-time=2weeks
 
 
-    echo ""
-    # echo "############################"
-    echo "%%%%% Clearing Pacman cache..."
-    # echo "############################"
-    echo ""
-    # 2. Clean Pacman cache (keeps latest 2 versions)
-    if command -v paccache &> /dev/null; then
-        sudo paccache -r 2>/dev/null
-    else
-        sudo pacman -Sc --noconfirm
-    fi
-    sudo paccache -rk1; sudo paccache -ruk0 # cleanup cache
-    sudo pacman -Rns $(pacman -Qdtq)        # cleanup orphans
+    read -p "Do you want to clear the pacman + yay + aur caches UwU? (y/n): " pacman_confirm
+        if [[ $pacman_confirm == [yY] || $pacman_confirm == [yY][eE][sS] ]]; then
+            echo ""
+            # echo "############################"
+            echo "%%%%% Clearing Pacman cache..."
+            # echo "############################"
+            echo ""
+            # 2. Clean Pacman cache (keeps latest 2 versions)
+            if command -v paccache &> /dev/null; then
+                sudo paccache -r 2>/dev/null
+            else
+                sudo pacman -Sc --noconfirm
+            
+            sudo paccache -rk1; sudo paccache -ruk0 # cleanup cache
+            # sudo pacman -Rns $(pacman -Qdtq)        # cleanup orphans // idek the organization of ts file man TwT
+
+            echo ""
+            # echo "############################"
+            echo "%%%%% Clearing yay/AUR build cache..."
+            # echo "############################"
+            echo ""
+            # 3. Clean yay (AUR) build cache
+            yay -Sc --noconfirm
+            fi
+        else
+            echo "Skipping clearing of pacman cache~"
+            echo "----------------------------"
+            echo ""
+        fi
 
 
-    echo ""
-    # echo "############################"
-    echo "%%%%% Clearing yay/AUR build cache..."
-    # echo "############################"
-    echo ""
-    # 3. Clean yay (AUR) build cache
-    yay -Sc --noconfirm
+
+    
 
 
     # 3.5 Remove orphaned packages (with confirmation!)
-    echo ""
+    # echo ""
     echo ""
     echo "############################"
     echo ""
@@ -159,6 +170,7 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
         RESULT=$(( TOTAL_KB / 1024 ))
         echo "You just saved approximately ${RESULT}MB! happy computing~"
     fi
+
 else
     echo "Cleanup cancelled~"
 fi

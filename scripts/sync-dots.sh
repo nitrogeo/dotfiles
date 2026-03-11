@@ -71,6 +71,7 @@ if [[ "$sync_choice" == "y" ]]; then
     rsync -a --exclude='.git' /home/nitro/scripts/ "$TARGET/scripts/"
     rsync -a --exclude='.git' /etc/security/faillock.conf "$TARGET/security/"
     rsync -a --exclude='.git' /home/nitro/.config/Modus/config/hypr/modus.conf "$TARGET/Modus/"
+    rsync -a --exclude='.git' /home/nitro/Pictures/wallpapers/github/ "$TARGET/some-wallpapers/"
 
 
 	# Copy the files
@@ -81,6 +82,7 @@ if [[ "$sync_choice" == "y" ]]; then
 	cp -a "/home/nitro/scripts/." "$TARGET/scripts"
     cp -a "/home/nitro/.config/btop/." "$TARGET/btop/"
     cp -a "/home/nitro/.config/kitty/." "$TARGET/kitty/"
+    cp -a "/home/nitro/Pictures/wallpapers/github/." "$TARGET/some-wallpapers"
 
 
 	# Copy specific files

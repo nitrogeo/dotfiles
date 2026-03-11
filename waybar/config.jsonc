@@ -51,8 +51,8 @@
 
       "icon-size": 16,
       "icon-theme": "Flat-Remix-Blue-Dark",
-      "orientation": "horizontal",
-      "on-click-window": "~/.config/waybar/scripts/focus-window.sh {address} {button}"
+      "orientation": "horizontal"
+      /* "on-click-window": "~/.config/waybar/scripts/focus-window.sh {address} {button}" */
     }
   },
   

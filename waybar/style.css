@@ -1,12 +1,19 @@
 /* style.css */
+@import "colors.css";
+
 * {
     font-family: "Inter Medium", "Symbols Nerd Font", "sans-serif;"; /* Choose your fonts */
     font-size: 11px;
     color: #f0f0f0; /* Light text color */
+
+    /* vars - use "gtk css" format */
+    /* THEYRE IN `colors.css` */
 }
 
 window#waybar {
-    background-color: rgba(30, 30, 30, 0.2); /* Semi-transparent dark background // orignally 20 20 20 0.8 */
+    /* background-color: rgba(36, 39, 58, 0.5); */ /* Semi-transparent dark background // orignally 20 20 20 0.8 */
+    background-color: rgba(30, 30, 30, 0.5);
+
     border-radius: 10px; /* Rounded corners */
     /* padding: 5px; */
     /* margin: 5px; */
@@ -25,7 +32,8 @@ window#waybar {
 
 
 #clock {
-    color: #8aadf4; /* Teal color for clock */
+    /* color: #8aadf4; */ /* Teal color for clock */
+    color: @main-color;
     padding: 0px 7px;
 }
 
@@ -64,6 +72,63 @@ window#waybar {
     padding: 0px 7px;
 }
 
+
+
+
+
+
+
+
+
+
+#custom-swaync {
+    color: #c6a0f6; /* also doesnt do anything?? idk // Catppuccin Mauve to match your active workspace */
+    padding: 0px 10px;
+    font-size: 18px;
+}
+/* This targets the dot (the span) inside the widget */
+#custom-swaync > priv-text > span {
+    color: #ed8796; /* Catppuccin Red */
+}
+
+
+
+
+#mpris {
+    padding: 0px 15px;      /* Adds horizontal breathing room */
+    margin: 0px 10px;       /* Adds space between music and other modules */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle background pod */
+    border-radius: 10px;
+    /* color: #c6a0f6; */        /* Matches your Mauve workspace color */
+    color: @main-color;
+}
+#clock {
+    padding: 0px 10px;      /* Adds horizontal breathing room */
+    margin: 0px 7px;       /* Adds space between music and other modules */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle background pod */
+    border-radius: 10px;
+}
+
+#taskbar button {
+    padding: 0px 5px;
+    margin: 0px 2px;
+}
+
+#taskbar button.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid #c6a0f6; /* Bottom line indicator */
+}
+
+
+
+
+
+
+
+
+
+
+
 /* Example of styling a specific module */
 #window {
     color: #FFB347; /* Example orange color */
@@ -93,14 +158,16 @@ window#waybar {
 }
 
 #workspaces button.occupied {
-    color: #c6a0f6; /* Subtle indicator that windows are open */
+    /* color: #ffffff; */ /* literally does nothing i have no idea?? // Subtle indicator that windows are open */
 }
 
 /* This targets the current workspace on EACH monitor */
 #workspaces button.active {
     color: #3c3c3c;
     /* color: #c6a0f6;*/  /* Catppuccin Mauve */
-    background-color: #c9a9f2;
+    /* background-color: #c9a9f2; */ /* actually changes active workspace bkg color */
+    background-color: @main-color;
+
     /* background-color: rgba(138, 160, 246, 0.45);*/ /* Subtle transparency */
     /* border-bottom: 3px solid #c6a0f6; */
     border-radius: 8px;       /* Keep your rounded look */
@@ -118,7 +185,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background-color: #9a85b3;
+    background-color: @second-color;
 }
 
 /* Targets the icons specifically within the workspace buttons */
@@ -134,41 +201,14 @@ window#waybar {
 
 
 
-#custom-swaync {
-    color: #c6a0f6; /* Catppuccin Mauve to match your active workspace */
-    padding: 0px 10px;
-    font-size: 18px;
-}
-/* This targets the dot (the span) inside the widget */
-#custom-swaync > priv-text > span {
-    color: #ed8796; /* Catppuccin Red */
-}
 
 
 
 
-#mpris {
-    padding: 0px 15px;      /* Adds horizontal breathing room */
-    margin: 0px 10px;       /* Adds space between music and other modules */
-    background: rgba(255, 255, 255, 0.05); /* Very subtle background pod */
-    border-radius: 10px;
-    color: #c6a0f6;         /* Matches your Mauve workspace color */
-}
-#clock {
-    padding: 0px 10px;      /* Adds horizontal breathing room */
-    margin: 0px 7px;       /* Adds space between music and other modules */
-    background: rgba(255, 255, 255, 0.05); /* Very subtle background pod */
-    border-radius: 10px;
-}
 
-#taskbar button {
-    padding: 0px 5px;
-    margin: 0px 2px;
-}
 
-#taskbar button.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-bottom: 2px solid #c6a0f6; /* Bottom line indicator */
-}
+
+
+
 
 
