@@ -1,0 +1,214 @@
+/* style.css */
+@import "colors.css";
+
+* {
+    font-family: "Inter Medium", "Symbols Nerd Font", "sans-serif;"; /* Choose your fonts */
+    font-size: 11px;
+    color: #f0f0f0; /* Light text color */
+
+    /* vars - use "gtk css" format */
+    /* THEYRE IN `colors.css` */
+}
+
+window#waybar {
+    /* background-color: rgba(36, 39, 58, 0.5); */ /* Semi-transparent dark background // orignally 20 20 20 0.8 */
+    background-color: rgba(30, 30, 30, 0.5);
+
+    border-radius: 0px; /* Rounded corners */
+    /* padding: 5px; */
+    /* margin: 5px; */
+    margin: 0px 5px 5px 5px; /* Top margin must be 0 to align with the reserved zone */
+    padding: 2px 5px; /* Reduce padding so it doesn't feel too bulky */
+}
+
+#waybar > * {
+    padding: 0px 15px; /* Spacing between modules */
+    margin-top: 0px;
+}
+
+#waybar > module {
+    margin: 0px 5px; /* Margin around modules */
+}
+
+
+#clock {
+    /* color: #8aadf4; */ /* Teal color for clock */
+    color: @main-color;
+    padding: 0px 7px;
+}
+
+#pulseaudio {
+    color: #eed49f; /* Yellow for volume */
+    padding: 0px 7px;
+}
+
+#network {
+    color: #a6da95;  /* Blue for network */
+    padding: 0px 7px;
+}
+
+#battery {
+    color: #90EE90; /* Light green for battery */
+    padding: 0px 7px;
+}
+
+#temperature {
+    color: #FF6B6B; /* Red for temperature */
+    padding: 0px 7px;
+}
+
+#cpu {
+    color: #ed8796; /* Orange for CPU */
+    padding: 0px 7px;
+}
+
+#memory {
+    color: #f5a97f; /* Purple for memory */
+    padding: 0px 7px;
+}
+
+#tray {
+    background-color: rgba(0,0,0,0); /* Transparent tray background */
+    padding: 0px 7px;
+}
+
+
+
+
+
+
+
+
+
+
+#custom-swaync {
+    color: #c6a0f6; /* also doesnt do anything?? idk // Catppuccin Mauve to match your active workspace */
+    padding: 0px 10px;
+    font-size: 18px;
+}
+/* This targets the dot (the span) inside the widget */
+#custom-swaync > priv-text > span {
+    color: #ed8796; /* Catppuccin Red */
+}
+
+
+
+
+#mpris {
+    padding: 0px 15px;      /* Adds horizontal breathing room */
+    margin: 0px 10px;       /* Adds space between music and other modules */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle background pod */
+    border-radius: 10px;
+    /* color: #c6a0f6; */        /* Matches your Mauve workspace color */
+    color: @main-color;
+}
+#clock {
+    padding: 0px 10px;      /* Adds horizontal breathing room */
+    margin: 0px 7px;       /* Adds space between music and other modules */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle background pod */
+    border-radius: 10px;
+}
+
+#taskbar button {
+    padding: 0px 5px;
+    margin: 0px 2px;
+}
+
+#taskbar button.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid #c6a0f6; /* Bottom line indicator */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Example of styling a specific module */
+#window {
+    color: #FFB347; /* Example orange color */
+}
+
+#workspaces {
+    background-color: transparent;
+    margin: 2px 5px;
+}
+
+#workspaces button {
+    padding: 0px 3px;
+    margin: 0px 3px;
+    color: #cad3f5; /* Catppuccin Text */
+    background-color: transparent;
+    /* This creates the space for the indicator */
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+
+    border-radius: 8px;
+}
+
+/* This targets the window icons ({windows}) specifically */
+#workspaces button label {
+    padding: 0px 2px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.occupied {
+    /* color: #ffffff; */ /* literally does nothing i have no idea?? // Subtle indicator that windows are open */
+}
+
+/* This targets the current workspace on EACH monitor */
+#workspaces button.active {
+    color: #3c3c3c;
+    /* color: #c6a0f6;*/  /* Catppuccin Mauve */
+    /* background-color: #c9a9f2; */ /* actually changes active workspace bkg color */
+    background-color: @main-color;
+
+    /* background-color: rgba(138, 160, 246, 0.45);*/ /* Subtle transparency */
+    /* border-bottom: 3px solid #c6a0f6; */
+    border-radius: 8px;       /* Keep your rounded look */
+    /* font-weight: bold; */        /* Makes the indicator clearer - commented bc of lag when switching*/
+}
+
+/* Optional: styling the window icons specifically when the workspace is active */
+#workspaces button.active label {
+    color: #3c3c3c;
+}
+
+#workspaces button.urgent {
+    color: #ed8796; /* Catppuccin Red */
+    border-bottom: 3px solid #ed8796;
+}
+
+#workspaces button:hover {
+    background-color: @second-color;
+}
+
+/* Targets the icons specifically within the workspace buttons */
+#workspaces button .taskbar-window {
+    /* padding: 0 4px; */
+    /* opacity: 0.6; */ /* Dim inactive windows in the tape */
+}
+
+#workspaces button .taskbar-window.active {
+    opacity: 1.0;
+    /* border-bottom: 2px solid #c9a9f2;*/ /* Highlight the current active window in the order */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
