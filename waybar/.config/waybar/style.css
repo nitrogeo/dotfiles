@@ -3,23 +3,31 @@
 
 * {
     font-family: "Inter Medium", "Symbols Nerd Font", "sans-serif;"; /* Choose your fonts */
-    font-size: 11px;
-    color: #f0f0f0; /* Light text color */
+    font-size: 9px;
+    /* color: #f0f0f0; */ /* Light text color */
+    color: @main-color;
 
     /* vars - use "gtk css" format */
     /* THEYRE IN `colors.css` */
 }
 
+
+
+
 window#waybar {
     /* background-color: rgba(36, 39, 58, 0.5); */ /* Semi-transparent dark background // orignally 20 20 20 0.8 */
     background-color: rgba(30, 30, 30, 0.5);
+    color: #f0f0f0;
 
     border-radius: 0px; /* Rounded corners */
     /* padding: 5px; */
     /* margin: 5px; */
-    margin: 0px 5px 5px 5px; /* Top margin must be 0 to align with the reserved zone */
-    padding: 2px 5px; /* Reduce padding so it doesn't feel too bulky */
+    margin: 0px 2px 2px 2px; /* Top margin must be 0 to align with the reserved zone */
+    /* padding: 2px 5px; */ /* Reduce padding so it doesn't feel too bulky */
 }
+
+
+
 
 #waybar > * {
     padding: 0px 15px; /* Spacing between modules */
@@ -33,7 +41,6 @@ window#waybar {
 
 #clock {
     /* color: #8aadf4; */ /* Teal color for clock */
-    color: @main-color;
     padding: 0px 7px;
 }
 
@@ -43,27 +50,27 @@ window#waybar {
 }
 
 #network {
-    color: #a6da95;  /* Blue for network */
+    color: #a6da95; /* Blue / green for network */
     padding: 0px 7px;
 }
 
 #battery {
-    color: #90EE90; /* Light green for battery */
+    /* color: #90EE90; */ /* Light green for battery */
     padding: 0px 7px;
 }
 
 #temperature {
-    color: #FF6B6B; /* Red for temperature */
+    /* color: #FF6B6B; */ /* Red for temperature */
     padding: 0px 7px;
 }
 
 #cpu {
-    color: #ed8796; /* Orange for CPU */
+    color: #ed8796; /* Orange / red for CPU */
     padding: 0px 7px;
 }
 
 #memory {
-    color: #f5a97f; /* Purple for memory */
+    color: #f5a97f; /* Purple / orange for memory */
     padding: 0px 7px;
 }
 
