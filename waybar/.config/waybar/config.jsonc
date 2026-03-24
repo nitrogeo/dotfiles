@@ -5,7 +5,7 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 30, // originally 20
+  "height": 20, // originally 20
 
   "spacing": 4,
 
