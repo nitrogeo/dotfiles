@@ -16,14 +16,21 @@
 
 window#waybar {
     /* background-color: rgba(36, 39, 58, 0.5); */ /* Semi-transparent dark background // orignally 20 20 20 0.8 */
-    background-color: rgba(30, 30, 30, 0.5);
+    background-color: rgba(30, 30, 30, 1);
     color: #f0f0f0;
 
     border-radius: 0px; /* Rounded corners */
-    /* padding: 5px; */
+    border: none;
+
+    /* padding format: [top] [right] [bottom] [left]; 
+       OR: padding: [vertical] [horizontal]; */
+    padding: 0px 0px; /* doesnt work idk why */
+    
+    /* The format is: Top, Right, Bottom, Left. 
+       Setting Right and Left to 0px will close the gap. */
     /* margin: 5px; */
     margin: 0px 2px 2px 2px; /* Top margin must be 0 to align with the reserved zone */
-    /* padding: 2px 5px; */ /* Reduce padding so it doesn't feel too bulky */
+    /* margin: 0; */
 }
 
 
@@ -90,9 +97,10 @@ window#waybar {
 
 #custom-swaync {
     color: #c6a0f6; /* also doesnt do anything?? idk // Catppuccin Mauve to match your active workspace */
-    padding: 0px 10px;
+    padding: 0px 0px;
     font-size: 18px;
 }
+
 /* This targets the dot (the span) inside the widget */
 #custom-swaync > priv-text > span {
     color: #ed8796; /* Catppuccin Red */
