@@ -172,6 +172,7 @@
 
     "format": "{player_icon} {artist} — {title}",
     "format-paused": "{player_icon} {artist} ~ {title}",
+    "format-stopped": "{player_icon} ~~~", // Add this line
     
     // tooltip
     "tooltip": true,
@@ -181,12 +182,12 @@
       "default": "▶",
       "mpv": "🎵",
       "spotify": " ",
-      "firefox": "",
+      // "firefox": "",
     },
     "status-icons": {
       "paused": ""
     },
-    "ignored-players": ["vlc", "firefox", "brave"]
+    // "ignored-players": ["vlc", "firefox", "brave"]
   },
 
   "custom/weather": {
