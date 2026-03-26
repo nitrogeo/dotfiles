@@ -3,7 +3,7 @@
 
 * {
     font-family: "Inter Medium", "Symbols Nerd Font", "sans-serif;"; /* Choose your fonts */
-    font-size: 9px;
+    font-size: 8.5px;
     /* color: #f0f0f0; */ /* Light text color */
     color: @main-color;
 
@@ -24,7 +24,7 @@ window#waybar {
 
     /* padding format: [top] [right] [bottom] [left]; 
        OR: padding: [vertical] [horizontal]; */
-    padding: 0px 0px; /* doesnt work idk why */
+    padding: 10px 10px; /* doesnt work idk why - but NEEDS THIS FOR HOVER MENUS TO WORK*/
     
     /* The format is: Top, Right, Bottom, Left. 
        Setting Right and Left to 0px will close the gap. */
