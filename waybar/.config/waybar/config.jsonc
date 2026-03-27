@@ -19,11 +19,14 @@
   "modules-left": ["hyprland/workspaces", "hyprland/window"/*, "wlr/taskbar"*/],
   "modules-center": ["mpris"],
   "modules-right": ["cpu", "memory", "pulseaudio","pulseaudio#microphone", "battery", "network", "clock", "tray", "custom/swaync"],
-  "hyprland/window": {
-      "format": "{}",
-      "separate-outputs": true
-  },
+  
 
+  "hyprland/window": {
+      "format": "{class}   //   {title}",
+      "separate-outputs": true,
+      "max-length": 40,
+      "tooltip": true
+  },
 
 
   "hyprland/workspaces": {
@@ -51,11 +54,14 @@
 
       "icon-size": 16,
       "icon-theme": "Flat-Remix-Blue-Dark",
-      "orientation": "horizontal"
-      /* "on-click-window": "~/.config/waybar/scripts/focus-window.sh {address} {button}" */
+      "orientation": "horizontal",
+      "on-click-window": "~/.config/waybar/scripts/focus-window.sh {address} {button}"
     }
   },
   
+
+
+
   /* new */
   /*
   "wlr/taskbar": {
