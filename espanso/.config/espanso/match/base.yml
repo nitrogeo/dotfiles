@@ -91,23 +91,32 @@ matches:
   - trigger: ":twt"
     replace: "😭"
 
+  - trigger: "/peak"
+    replace: "🗣️🔥"
+
   # commands
   - trigger: "/shutdown"
     replace: "sudo systemctl shutdown"
+  
   - trigger: "/neofetch"
     replace: "fastfetch"
-  - trigger: "/nano"
-    replace: "subl"
+
+  # - trigger: "/nano"
+  #  replace: "subl"
+
   - trigger: "/clean"
     replace: "./scripts/clean-arch.sh"
+
   - trigger: "/cr"
     replace: "clear"
+  
   - trigger: "/sync"
     replace: "./scripts/sync-dots.sh"
+  
   - trigger: "/ff"
     replace: "fastfetch"
-  - trigger: "/fe"
-    replace: "yazi"
+  # - trigger: "/fe"
+  #  replace: "yazi"
 
   # dyanmic
   - trigger: ":now"
@@ -119,7 +128,8 @@ matches:
           format: "%H:%M%p"
 
 
-
-
+# misc idk
+  - trigger: "/gv"
+    replace: "gwenview"
 
 
