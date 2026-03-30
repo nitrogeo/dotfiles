@@ -1,0 +1,17 @@
+# 1. MOBILE MODE (Just Laptop)
+profile {
+    output "eDP-1" mode 1360x768 position 0,0
+}
+
+# 2. LG SETUP (Laptop on Right, LG on Left)
+# LG is 1080 high, Laptop is 768. 1080 - 768 = 312 offset for level bottoms.
+profile {
+    output "DP-1" mode 1920x1080 position 0,0
+    output "eDP-1" mode 1360x768 position 1920,312
+}
+
+# 3. ACER SETUP (Laptop on Left, Acer on Right)
+profile {
+    output "eDP-1" mode 1360x768 position 0,312
+    output "HDMI-A-1" mode 1920x1080 position 1360,0
+}
