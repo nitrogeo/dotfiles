@@ -1,4 +1,26 @@
 
+output "LG Electronics MP59G 0x01010101" {
+  mode 1920x1080@60
+  position -1920,-312
+  # scale 1
+  alias $LG
+}
+
+output "Acer Technologies KA242Y THZAA007853B" {
+  mode 1920x1080@60
+  position 1360,0
+  # scale 1
+  alias $ACER
+}
+
+profile home-lg {
+  output $LG enable
+  output $ACER disable
+}
+
+
+
+
 # 1. MOBILE MODE (Just Laptop)
 profile laptop {
     output "eDP-1" mode 1360x768 position 0,0
@@ -12,7 +34,7 @@ profile laptop {
 #    output "LG Electronics MP59G 0x01010101" mode 1920x1080 position 0,0
     # output "DP-1" mode 1920x1080 position 0,0
 #}
-profile lg-monitor {
+profile lg -monitor {
     # Specify the LG on the left at 0,0
     output "LG Electronics MP59G 0x01010101" mode 1920x1080 position 0,0
     
