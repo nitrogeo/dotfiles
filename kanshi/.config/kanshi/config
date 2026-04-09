@@ -1,28 +1,16 @@
-
 # 1. MOBILE MODE (Just Laptop)
 profile laptop {
-    output "eDP-1" mode 1360x768 position 0,0
-    # monitor = eDP-1, 1360x768@60, 0x312, 1
+    output "AU Optronics 0x80EC" mode 1360x768@60 position 0,0
 }
 
-# 2. LG SETUP (Laptop on Right, LG on Left)
-# LG is 1080 high, Laptop is 768. 1080 - 768 = 312 offset for level bottoms.
-#profile LG-monitor {
-#    output "eDP-1" mode 1360x768 position 1920,312
-#    output "LG Electronics MP59G 0x01010101" mode 1920x1080 position 0,0
-    # output "DP-1" mode 1920x1080 position 0,0
-#}
-profile lg-monitor {
-    # Specify the LG on the left at 0,0
-    output "LG Electronics MP59G 0x01010101" mode 1920x1080 position 0,0
-    
-    # Specify the Laptop on the right at 1920,312
-    # If 1360x768 keeps failing, try using "preferred" here
-    output "eDP-1" mode 1360x768 position 1920,312
+# 2. LG SETUP (LG on Left, Laptop on Right, Bottoms Level)
+profile LG-monitor {
+    output "LG Electronics MP59G 0x01010101" mode 1920x1080@60 position 0,0
+    output "AU Optronics 0x80EC" mode 1360x768@60 position 1920,312
 }
 
-# 3. ACER SETUP (Laptop on Left, Acer on Right)
+# 3. ACER SETUP (Laptop on Left, Acer on Right, Bottoms Level)
 profile acer-monitor {
-    output "eDP-1" mode 1360x768 position 0,312
-    output "Acer Technologies KA242Y THZAA007853B" mode 1920x1080 position 1360,0
+    output "AU Optronics 0x80EC" mode 1360x768@60 position 0,312
+    output "Acer Technologies KA242Y THZAA007853B" mode 1920x1080@60 position 1360,0
 }
