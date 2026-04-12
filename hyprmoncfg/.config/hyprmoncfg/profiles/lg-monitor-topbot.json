@@ -1,0 +1,48 @@
+{
+  "name": "lg-monitor-topbot",
+  "created_at": "2026-04-12T03:09:48.223863448Z",
+  "updated_at": "2026-04-12T15:03:10.976358866Z",
+  "outputs": [
+    {
+      "key": "au optronics|0x80ec",
+      "name": "eDP-1",
+      "make": "AU Optronics",
+      "model": "0x80EC",
+      "enabled": true,
+      "mode": "1366x768@60.06Hz",
+      "width": 1366,
+      "height": 768,
+      "refresh": 60.06,
+      "x": 0,
+      "y": 0,
+      "scale": 1,
+      "transform": 0
+    },
+    {
+      "key": "lg electronics|mp59g|0x01010101",
+      "name": "HDMI-A-1",
+      "make": "LG Electronics",
+      "model": "MP59G",
+      "serial": "0x01010101",
+      "enabled": true,
+      "mode": "1920x1080@74.97Hz",
+      "width": 1920,
+      "height": 1080,
+      "refresh": 74.97,
+      "x": -277,
+      "y": -1080,
+      "scale": 1,
+      "transform": 0
+    }
+  ],
+  "workspaces": {
+    "enabled": false,
+    "strategy": "sequential",
+    "max_workspaces": 9,
+    "group_size": 3,
+    "monitor_order": [
+      "lg electronics|mp59g|0x01010101",
+      "au optronics|0x80ec"
+    ]
+  }
+}

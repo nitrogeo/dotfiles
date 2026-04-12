@@ -1,0 +1,31 @@
+{
+  "name": "laptop only",
+  "created_at": "2026-04-09T11:26:20.33009118Z",
+  "updated_at": "2026-04-12T15:02:17.351088423Z",
+  "outputs": [
+    {
+      "key": "au optronics|0x80ec",
+      "name": "eDP-1",
+      "make": "AU Optronics",
+      "model": "0x80EC",
+      "enabled": true,
+      "mode": "1366x768@60.06Hz",
+      "width": 1366,
+      "height": 768,
+      "refresh": 60.06,
+      "x": 0,
+      "y": 0,
+      "scale": 1,
+      "transform": 0
+    }
+  ],
+  "workspaces": {
+    "enabled": false,
+    "strategy": "sequential",
+    "max_workspaces": 9,
+    "group_size": 3,
+    "monitor_order": [
+      "au optronics|0x80ec"
+    ]
+  }
+}
