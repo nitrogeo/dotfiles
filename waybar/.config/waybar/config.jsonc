@@ -23,6 +23,10 @@
 
   "hyprland/window": {
       "format": "{class}   //   {title}",
+      "rewrite": {
+        "": "Desktop" // Text to show when no window is active
+      },
+
       "separate-outputs": true,
       "max-length": 40,
       "tooltip": true
@@ -89,7 +93,9 @@
 
   "memory": {
     "interval": 1,
-    "format": "   {used:0.1f}GB",
+    /* "format": "   {used:0.1f}GB", */
+    "format": "   {percentage}%",
+    "format-alt": "   {used:0.1f}GB",
     "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
   },
 
@@ -122,6 +128,8 @@
 
   "pulseaudio": {
       "format": "{icon} {volume}%",
+      "format-alt": "{icon} {volume}%  //  {desc}",
+      /* "format-bluetooth": "{icon} {volume}% {desc}", */
       "tooltip": false,
       "format-muted": " Muted",
       "on-click": "pamixer -t",
@@ -152,12 +160,17 @@
   
   "network": {
       // "interface": "wlp2*", // (Optional) To force the use of this interface
-      "format-wifi": "  {essid}  //  {signalStrength}%",
+      "format-wifi": "  {signalStrength}%",
       "format-ethernet": "{ipaddr}/{cidr}  ",
-      "tooltip-format": "{essid} - {ifname} via {gwaddr} ",
+
+      /* "tooltip-format": "{essid} - {ifname} via {gwaddr} ", */
+      "tooltip-format": "{essid} // {ifname} via {gwaddr} // {ipaddr}/{cidr}",
+
       "format-linked": "{ifname} (No IP) ",
       "format-disconnected": "Disconnected ⚠",
-      "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+
+      /* "format-alt": "{ifname}:{essid} // {ipaddr}/{cidr}" */
+      "format-alt": "  {essid}  //  {signalStrength}%"
   },
 
   "bluetooth": {

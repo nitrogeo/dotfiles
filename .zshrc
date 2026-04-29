@@ -129,3 +129,9 @@ source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Created by `pipx` on 2026-04-19 22:18:08
+export PATH="$PATH:/home/nitro/.local/bin"
+
+# opencode
+export PATH=/home/nitro/.opencode/bin:$PATH
