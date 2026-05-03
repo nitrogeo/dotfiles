@@ -1,0 +1,70 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 4
+final_space = true
+
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  # newline = true
+
+  [[blocks.segments]] # current directory
+    type = 'path'
+    style = 'plain'
+    # foreground = '#cba6f7' # purple! - #8787d4 # indigo!
+    foreground = 'magenta' # the directory text color
+    background = 'transparent'
+    template = '╭─ {{ .Path }}'
+  
+
+    [blocks.segments.properties]
+      style = 'full'
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    foreground = 'blue'
+    background = 'transparent'
+    # 
+    template = "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}"
+
+    [blocks.segments.properties]
+      branch_icon =' '
+
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]] # "right angled bracket"
+    type = 'text'
+    style = 'plain'
+    foreground_templates = [
+      "{{if gt .Code 0}}red{{end}}", # the text color after error
+      "{{if eq .Code 0}}#cba6f7{{end}}", # the text color after success
+    ]
+    background = 'transparent'
+    template = "╰─❯" # or '>' ?? idk which better lol
+
+
+[transient_prompt]
+  foreground_templates = [
+      "{{if gt .Code 0}}red{{end}}", # the text color after error
+      "{{if eq .Code 0}}#cba6f7{{end}}", # the text color after success
+    ]
+  background = 'transparent'
+  template = '❯ '
+      
+
+
+
+[[blocks]]
+  type = 'rprompt'
+
+  [[blocks.segments]]
+    template = 'at <p:blue><b>{{ .CurrentDate | date "03:04 PM" }}</b></>'
+    foreground = 'p:white'
+    background = 'transparent'
+    type = 'time'
+    style = 'diamond'

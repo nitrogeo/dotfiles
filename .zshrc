@@ -120,7 +120,8 @@ export NVM_DIR="$HOME/.nvm"
 # Load the Catppuccin Theme
 # source /home/nitro/.config/@themes/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 # source '/home/nitro/Documents/[1] developer + git~/dotfiles/@TEMP ZSH/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh'
-source '/home/nitro/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh'
+# source '/home/nitro/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh'
+source '/home/nitro/dotfiles/zsh-custom/.config/zsh-custom/catppuccin_mocha-zsh-syntax-highlighting.zsh'
 
 # Load the Syntax Highlighting Plugin
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
@@ -135,3 +136,8 @@ export PATH="$PATH:/home/nitro/.local/bin"
 
 # opencode
 export PATH=/home/nitro/.opencode/bin:$PATH
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/nitro/.lmstudio/bin"
+# End of LM Studio CLI section
+
