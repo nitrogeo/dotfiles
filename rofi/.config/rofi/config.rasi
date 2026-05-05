@@ -185,5 +185,13 @@ configuration {
 
 
 
-@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+// @theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+@theme "/home/nitro/.config/rofi/catppuccin-default.rasi"
+
+// @theme "sur";
+* {
+	background-color: #24273a00;
+}
+
+
 // @theme "/home/nitro/.config/rofi/launchers/type-4/custom-style-4.rasi"
