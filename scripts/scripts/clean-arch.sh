@@ -49,11 +49,11 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
     # reddit clear commands 3.3.20264
     echo ""
     # echo "############################"
-    echo "%%%%% Updating Flatpak and clearing unused dependencies..."
+    echo "%%%%% (not Updating Flatpak) {and} clearing unused dependencies..."
     # echo "############################"
     echo ""
 
-    flatpak update
+    # flatpak update
     flatpak uninstall --unused; 
     # flatpak repair
 
@@ -81,6 +81,7 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
             sudo paccache -rk1; sudo paccache -ruk0 # cleanup cache
             # sudo pacman -Rns $(pacman -Qdtq)        # cleanup orphans // idek the organization of ts file man TwT
 
+
             echo ""
             # echo "############################"
             echo "%%%%% Clearing yay/AUR build cache..."
@@ -88,6 +89,7 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
             echo ""
             # 3. Clean yay (AUR) build cache
             yay -Sc --noconfirm
+
             fi
         else
             echo "Skipping clearing of pacman cache~"
@@ -97,35 +99,52 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 
 
 
-    
 
+    read -p "Do you want to FORCE CLEAR the pacman and yay cache directories?: " rm_confirm
+        if [[ $rm_confirm == [yY] || $rm_confirm == [yY][eE][sS] ]]; then
+            echo ""
+            # echo "############################"
+            echo "%%%%% Clearing cache directories..."
+            # echo "############################"
+            echo ""
 
-    # 3.5 Remove orphaned packages (with confirmation!)
-    # echo ""
-    echo ""
-    echo "############################"
-    echo ""
-    echo "Checking for orphaned packages..."
-    ORPHANS=$(pacman -Qdtq)
-    if [[ -n "$ORPHANS" ]]; then
-        echo "The following orphaned packages were found:"
-        echo "$ORPHANS"
-        echo ""
-        read -p "Do you want to remove these orphaned packages UwU? (y/n): " orphan_confirm
-        if [[ $orphan_confirm == [yY] || $orphan_confirm == [yY][eE][sS] ]]; then
-            sudo pacman -Rns $ORPHANS --noconfirm
+            sudo rm -rf /var/cache/pacman/pkg/*
+            sudo rm -rf /home/nitro/.cache/yay/*
+            fi
         else
-            echo "Skipping removal of orphaned packages~"
+            echo "Skipping clearing of cache directories~"
             echo "----------------------------"
             echo ""
         fi
-    else
-        echo "No orphaned packages found~"
+    
+
+
+        # 3.5 Remove orphaned packages (with confirmation!)
+        # echo ""
         echo ""
         echo "############################"
         echo ""
-        echo ""
-    fi
+        echo "Checking for orphaned packages..."
+        ORPHANS=$(pacman -Qdtq)
+        if [[ -n "$ORPHANS" ]]; then
+            echo "The following orphaned packages were found:"
+            echo "$ORPHANS"
+            echo ""
+            read -p "Do you want to remove these orphaned packages UwU? (y/n): " orphan_confirm
+            if [[ $orphan_confirm == [yY] || $orphan_confirm == [yY][eE][sS] ]]; then
+                sudo pacman -Rns $ORPHANS --noconfirm
+            else
+                echo "Skipping removal of orphaned packages~"
+                echo "----------------------------"
+                echo ""
+            fi
+        else
+            echo "No orphaned packages found~"
+            echo ""
+            echo "############################"
+            echo ""
+            echo ""
+        fi
 
 
 
@@ -170,7 +189,6 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
         RESULT=$(( TOTAL_KB / 1024 ))
         echo "You just saved approximately ${RESULT}MB! happy computing~"
     fi
-
 else
     echo "Cleanup cancelled~"
 fi
