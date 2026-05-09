@@ -90,9 +90,13 @@ matches:
     replace: "😭"
   - trigger: ":twt"
     replace: "😭"
-
   - trigger: "/peak"
     replace: "🗣️🔥"
+
+# 5.8.2026
+  - trigger: ":nerd"
+    replace: "🤓☝"
+
 
   # commands
   - trigger: "/shutdown"
@@ -117,6 +121,13 @@ matches:
     replace: "fastfetch"
   # - trigger: "/fe"
   #  replace: "yazi"
+
+  - trigger: "/net"
+    replace: "sudo systemctl restart NetworkManager"
+
+  - trigger: "/po"
+    replace: "poweroff"
+
 
   # dyanmic
   - trigger: ":now"
