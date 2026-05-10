@@ -137,6 +137,27 @@ window#waybar {
 }
 
 
+/* style.css update */
+#workspaces button image.kitty {
+    background-image: url("/home/nitro/Pictures/icons/kitty1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+/* Also target the generic taskbar-window class if 'kitty' alone fails */
+#workspaces button .taskbar-window.kitty {
+    background-image: url("/home/nitro/Pictures/icons/kitty1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+}
+
+
 
 
 
