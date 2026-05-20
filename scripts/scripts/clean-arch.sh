@@ -110,7 +110,7 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 
             sudo rm -rf /var/cache/pacman/pkg/*
             sudo rm -rf /home/nitro/.cache/yay/*
-            fi
+            
         else
             echo "Skipping clearing of cache directories~"
             echo "----------------------------"

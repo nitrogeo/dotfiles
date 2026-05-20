@@ -7,7 +7,7 @@
   "gtk-layer-shell": true,
   "height": 20, // originally 20
 
-  "spacing": 4,
+  "spacing": 2,
 
   "margin-top": 0,
   /* "margin-left": 1, */
@@ -16,10 +16,18 @@
   /* "spacing": 0, */
 
 
-  "modules-left": ["hyprland/workspaces", "hyprland/window"/*, "wlr/taskbar"*/],
+  "modules-left": ["custom/archicon", "hyprland/workspaces", "hyprland/window"/*, "wlr/taskbar"*/],
   "modules-center": ["mpris"],
   "modules-right": ["cpu", "memory", "pulseaudio","pulseaudio#microphone", "battery", "network", "clock", "tray", "custom/swaync"],
   
+  
+  "custom/archicon": {
+    "format": "  ",
+    "tooltip": false,
+    "on-click": "wofi --show drun" // Optional: makes it a launcher
+  },
+  
+
 
   "hyprland/window": {
       "format": "{class}   //   {title}",

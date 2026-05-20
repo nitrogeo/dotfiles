@@ -143,4 +143,7 @@ matches:
   - trigger: "/gv"
     replace: "gwenview"
 
+  - trigger: "(tm)"
+    replace: "™"
+
 

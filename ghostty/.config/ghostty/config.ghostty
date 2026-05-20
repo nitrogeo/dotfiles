@@ -1,0 +1,11 @@
+theme = catppuccin-macchiato.conf
+
+font-family = "CommitMono"
+font-size = 12
+
+background-opacity = 0.8
+background-blur = true
+
+
+gtk-titlebar = false
+gtk-wide-tabs = false

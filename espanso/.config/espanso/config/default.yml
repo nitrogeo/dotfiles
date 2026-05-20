@@ -54,3 +54,4 @@
 search_shortcut: ctrl + alt + space
 toggle_key: OFF
 
+show_notifications: false
