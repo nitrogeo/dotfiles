@@ -45,7 +45,7 @@ matches:
   # ⌄⌄ CUSTOM ⌄⌄ ////////////////////////////////////////
 
   # emails
-  - trigger: "/no"
+  - trigger: "//.no"
     replace: "nitrogeo@outlook.com"
 
   - trigger: "/fg"
@@ -66,7 +66,7 @@ matches:
 
 
   # school email + username
-  - trigger: "/ke"
+  - trigger: "//ke"
     replace: "K1404887@students.katyisd.org"
   - trigger: "/kn"
     replace: "K1404887"
