@@ -57,12 +57,28 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
     flatpak uninstall --unused; 
     # flatpak repair
 
-    echo ""
-    # echo "############################"
-    echo "%%%%% Vaccuming journalctl..."
-    # echo "############################"
-    echo ""
-    sudo journalctl --vacuum-time=2weeks
+    read -p "Do you want to vaccum journalctl? (y/n): " pacman_confirm
+        if [[ $pacman_confirm == [yY] || $pacman_confirm == [yY][eE][sS] ]]; then
+            echo ""
+            # echo "############################"
+            echo "%%%%% Vaccuming journalctl..."
+            # echo "############################"
+            echo ""
+            sudo journalctl --vacuum-time=2weeks
+            fi
+        else
+            echo "Skipping clearing of journalctl~"
+            echo "----------------------------"
+            echo ""
+        fi
+
+
+    # echo ""
+    ## echo "############################"
+    # echo "%%%%% Vaccuming journalctl..."
+    ## echo "############################"
+    # echo ""
+    # sudo journalctl --vacuum-time=2weeks
 
 
     read -p "Do you want to clear the pacman + yay + aur caches UwU? (y/n): " pacman_confirm
