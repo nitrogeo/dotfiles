@@ -45,7 +45,7 @@ matches:
   # ⌄⌄ CUSTOM ⌄⌄ ////////////////////////////////////////
 
   # emails
-  - trigger: "//.no"
+  - trigger: "//no"
     replace: "nitrogeo@outlook.com"
 
   - trigger: "/fg"
@@ -59,7 +59,7 @@ matches:
   - trigger: "/nf"
     replace: "nitrofrox@gmail.com"
 
-  - trigger: "/na"
+  - trigger: "//na"
     replace: "nitro.apps@outlook.com"
   - trigger: "/e2"
     replace: "e2squared78@outlook.com"
@@ -108,7 +108,7 @@ matches:
   # - trigger: "/nano"
   #  replace: "subl"
 
-  - trigger: "/clean"
+  - trigger: "//clean"
     replace: "./scripts/clean-arch.sh"
 
   - trigger: "/cr"
@@ -125,7 +125,7 @@ matches:
   - trigger: "/net"
     replace: "sudo systemctl restart NetworkManager"
 
-  - trigger: "/po"
+  - trigger: "//po"
     replace: "poweroff"
 
 
