@@ -1,0 +1,1 @@
+scripts/scripts/set-browser.sh

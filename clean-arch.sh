@@ -1,0 +1,1 @@
+scripts/scripts/clean-arch.sh

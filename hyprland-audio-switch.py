@@ -1,0 +1,1 @@
+scripts/scripts/hyprland-audio-switch.py

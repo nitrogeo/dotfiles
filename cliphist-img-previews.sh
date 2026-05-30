@@ -1,0 +1,1 @@
+scripts/scripts/cliphist-img-previews.sh
