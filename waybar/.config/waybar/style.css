@@ -6,6 +6,7 @@
     /* font-family: "Geist Mono", "Symbols Nerd Font", "monospace;"; */
 
     font-size: 8.5px;
+    min-height: 0;
     /* color: #f0f0f0; */ /* Light text color */
     /* text */ color: @main-color;
 
@@ -29,7 +30,7 @@ window#waybar {
 
     /* padding format: [top] [right] [bottom] [left]; 
        OR: padding: [vertical] [horizontal]; */
-    padding: 10px 10px; /* doesnt work idk why - but NEEDS THIS FOR HOVER MENUS TO WORK*/
+    padding: 0px 0px; /* doesnt work idk why - but NEEDS THIS FOR HOVER MENUS TO WORK*/
     
     /* The format is: Top, Right, Bottom, Left. 
        Setting Right and Left to 0px will close the gap. */
@@ -183,7 +184,7 @@ window#waybar {
 #workspaces button {
     padding: 0px 3px;
     margin: 0px 3px;
-    color: #cad3f5; /* Catppuccin Text */
+    /* color: #cad3f5; */ /* Catppuccin Text */ /* 6.12.2026 doesnt work idk why - oh button.active is what works*/
     background-color: transparent;
     /* This creates the space for the indicator */
     border-bottom: 3px solid transparent;
@@ -207,7 +208,8 @@ window#waybar {
     color: #3c3c3c;
     /* color: #c6a0f6;*/  /* Catppuccin Mauve */
     /* background-color: #c9a9f2; */ /* actually changes active workspace bkg color */
-    background-color: @main-color;
+    /*background-color: @main-color;*/
+    background-color: rgba(229, 230, 245, 0.8);;
 
     /* background-color: rgba(138, 160, 246, 0.45);*/ /* Subtle transparency */
     /* border-bottom: 3px solid #c6a0f6; */
