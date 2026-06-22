@@ -48,27 +48,27 @@ matches:
   - trigger: "//no"
     replace: "nitrogeo@outlook.com"
 
-  - trigger: "/fg"
+  - trigger: "//fg"
     replace: "froxgames@outlook.com"
 
   - triggers: 
-    - "/hc"
-    - "/hb"
+    - "//hc"
+    - "//hb"
     replace: "honeycombburrow@gmail.com"
 
-  - trigger: "/nf"
+  - trigger: "//nf"
     replace: "nitrofrox@gmail.com"
 
   - trigger: "//na"
     replace: "nitro.apps@outlook.com"
-  - trigger: "/e2"
+  - trigger: "//e2"
     replace: "e2squared78@outlook.com"
 
 
   # school email + username
   - trigger: "//ke"
     replace: "K1404887@students.katyisd.org"
-  - trigger: "/kn"
+  - trigger: "//kn"
     replace: "K1404887"
 
 
@@ -99,10 +99,10 @@ matches:
 
 
   # commands
-  - trigger: "/shutdown"
+  - trigger: "//shutdown"
     replace: "sudo systemctl shutdown"
   
-  - trigger: "/neofetch"
+  - trigger: "//neofetch"
     replace: "fastfetch"
 
   # - trigger: "/nano"
@@ -111,18 +111,18 @@ matches:
   - trigger: "//clean"
     replace: "./scripts/clean-arch.sh"
 
-  - trigger: "/cr"
+  - trigger: "//cr"
     replace: "clear"
   
-  - trigger: "/sync"
+  - trigger: "//sync"
     replace: "./scripts/sync-dots.sh"
   
-  - trigger: "/ff"
+  - trigger: "//ff"
     replace: "fastfetch"
   # - trigger: "/fe"
   #  replace: "yazi"
 
-  - trigger: "/net"
+  - trigger: "//net"
     replace: "sudo systemctl restart NetworkManager"
 
   - trigger: "//po"
