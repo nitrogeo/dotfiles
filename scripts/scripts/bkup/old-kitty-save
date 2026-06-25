@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+self="${KITTY_WINDOW_ID:-0}"
+other_id=$(kitty @ ls 2>/dev/null | jq -r "[.[].tabs[] | select(.windows[].id == $self) | .windows[] | select(.id != $self) | .id][0]" 2>/dev/null)
+
+if [ -z "$other_id" ]; then
+  notify-send 'Kitty Save Error' 'Could not find target window'
+  printf 'Press Enter to close...'; read dummy
+  exit 1
+fi
+
+kitty @ get-text --extent=all --match "id:$other_id" > /tmp/kitty_save_buffer.txt
+
+printf 'Enter filename: '
+read filename
+final_name="${filename:-dump_$(date +%H%M%S)}"
+mv /tmp/kitty_save_buffer.txt "/home/nitro/Documents/console/kitty/${final_name}.txt" 2>/dev/null
+notify-send 'Kitty Output Saved' "${final_name}.txt saved"
