@@ -8,11 +8,12 @@ echo "========================================" # ~40 = signs idk
 echo "      System Time Verification      "
 echo "========================================"
 echo ""
-echo -n "Is the system time/clock right? (y/n): "
+# echo -n "Is the system time/clock right? (y/n): "
+echo -n "Do you need to fix the system clock? (y/n): "
 read -r answer
 
 
-if [[ "$answer" =~ ^[Yy]$ ]]; then
+if [[ "$answer" =~ ^[Nn]$ ]]; then
     echo ""
     echo "nvm lol"
     echo ""
@@ -23,7 +24,7 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
     done
     exit 0
 
-elif [[ "$answer" =~ ^[Nn]$ ]]; then
+elif [[ "$answer" =~ ^[Yy]$ ]]; then
     echo ""
     echo "--- Enter Correct Details ---"
 
