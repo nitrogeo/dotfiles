@@ -1,15 +1,19 @@
 #!/usr/bin/env sh
-TO="unix:/tmp/mykitty"
 OUTPUT_DIR="$HOME/Documents/console/kitty"
 mkdir -p "$OUTPUT_DIR"
 
-kitty @ --to "$TO" get-text --extent=all --match="state:parent_focused" --ansi \
+kitty @ get-text --extent=all --match="state:focused" --ansi \
   > /tmp/kitty_save_buffer.txt 2>/tmp/kitty_save_error.txt
 
-printf 'Enter filename: '
-read -r filename
-final_name="${filename:-dump_$(date +%H%M%S)}"
-mv /tmp/kitty_save_buffer.txt "${OUTPUT_DIR}/${final_name}.txt"
+filename=$(rofi -dmenu -p "Save as:" < /dev/null 2>/dev/null) || filename=""
+
+if [ -z "$filename" ]; then
+  rm -f /tmp/kitty_save_buffer.txt
+  exit 0
+fi
+
+final_name="${filename%.txt}.txt"
+mv /tmp/kitty_save_buffer.txt "${OUTPUT_DIR}/${final_name}"
 
 command -v notify-send >/dev/null 2>&1 && \
-  notify-send 'Kitty Output Saved' "${final_name}.txt saved"
+  notify-send 'Kitty Output Saved' "${final_name} saved"
