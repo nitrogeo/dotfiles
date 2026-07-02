@@ -5,21 +5,25 @@ mkdir -p "$OUTPUT_DIR"
 PARENT_ID=$(kitty @ ls | python3 -c "
 import sys, json
 data = json.load(sys.stdin)
-overlay_ts = None
-best_id = None
-best_ts = -1
 for os_window in data:
+    if not os_window.get('is_focused'):
+        continue
+    tab_history = os_window.get('active_tab_history', [])
+    overlay_tab_id = None
     for tab in os_window.get('tabs', []):
         for win in tab.get('windows', []):
-            ts = win.get('last_focused_at', 0)
             if win.get('is_self'):
-                overlay_ts = ts
-            elif ts > best_ts:
-                best_ts = ts
-                best_id = win['id']
-# Prefer the window focused just before the overlay
-if overlay_ts and best_id:
-    print(best_id)
+                overlay_tab_id = tab['id']
+                break
+    for tid in tab_history:
+        if tid != overlay_tab_id:
+            for tab in os_window.get('tabs', []):
+                if tab['id'] == tid:
+                    aw = tab.get('active_window_history', [None])[0]
+                    if aw:
+                        print(aw)
+                    break
+            break
 " 2>/dev/null)
 
 if [ -z "$PARENT_ID" ]; then
@@ -27,7 +31,7 @@ if [ -z "$PARENT_ID" ]; then
     exit 1
 fi
 
-kitty @ get-text --match="id:$PARENT_ID" --extent=all --ansi \
+kitty @ get-text --match="id:$PARENT_ID" --extent=all \
   > /tmp/kitty_save_buffer.txt 2>/tmp/kitty_save_error.txt
 
 if [ ! -s /tmp/kitty_save_buffer.txt ]; then

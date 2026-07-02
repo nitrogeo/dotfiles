@@ -51,7 +51,7 @@ elif [[ "$answer" =~ ^[Yy]$ ]]; then
     # Set system time and immediately sync it to the hardware clock (RTC)
     sudo date -s "$date_string" && sudo hwclock --systohc
     sleep 1
-    bash /home/nitro/.config/waybar/scripts/nitrolaunch.sh
+    bash /home/nitro/.config/waybar/scripts/nitrolaunch.sh &
 
     echo ""
     # 5-second countdown timer
