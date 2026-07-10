@@ -220,7 +220,7 @@
     "status-icons": {
       "paused": ""
     }
-    // "ignored-players": ["vlc", "firefox", "brave"]
+    /* "ignored-players": ["vlc", "firefox", "brave"] */
   },
 
   "custom/weather": {

@@ -59,12 +59,12 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: #eed49f; /* Yellow for volume */
+    color: @bblue; /* #eed49f; */ /* Yellow for volume */
     padding: 0px 7px;
 }
 
 #network {
-    color: #a6da95; /* Blue / green for network */
+    color: @xsky; /* #a6da95; */ /* Blue / green for network */
     padding: 0px 7px;
 }
 
@@ -79,12 +79,12 @@ window#waybar {
 }
 
 #cpu {
-    color: #ed8796; /* Orange / red for CPU */
+    color: @xpink; /* #ed8796; */ /* Orange / red for CPU */
     padding: 0px 7px;
 }
 
 #memory {
-    color: #f5a97f; /* Purple / orange for memory */
+    color: @mauve; /* #f5a97f; */ /* Purple / orange for memory */
     padding: 0px 7px;
 }
 
