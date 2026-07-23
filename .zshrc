@@ -117,6 +117,25 @@ export NVM_DIR="$HOME/.nvm"
 #    ~/scripts/clean-arch.sh auto
 # fi
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# my configs ------------------------------------------------------------------------------------
+
+# misc
+
 # Load the Catppuccin Theme
 # source /home/nitro/.config/@themes/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 # source '/home/nitro/Documents/[1] developer + git~/dotfiles/@TEMP ZSH/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh'
@@ -141,3 +160,15 @@ export PATH=/home/nitro/.opencode/bin:$PATH
 export PATH="$PATH:/home/nitro/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+
+# aliases
+# 7.23.2026
+# fastfetch --short
+alias ff="fastfetch"
+
+# hardware info --short
+alias hw="hwinfo --short"
+
+# yazi
+alias files="yazi"
