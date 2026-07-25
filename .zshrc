@@ -63,16 +63,20 @@ ZSH_THEME="robbyrussell"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# ZSH_CUSTOM=/home/nitro/.oh-my-zsh/plugins/
+ZSH_CUSTOM=/home/nitro/.config/zsh-custom/
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+plugins=(git zsh-autosuggestions)
+
+
+
+eval "$(zoxide init zsh)"
+# source $ZSH/oh-my-zsh.sh
+if [ -f $ZSH/oh-my-zsh.sh ]; then
+	source $ZSH/oh-my-zsh.sh
+fi
+
 
 # User configuration
 
@@ -141,9 +145,11 @@ export NVM_DIR="$HOME/.nvm"
 # source '/home/nitro/Documents/[1] developer + git~/dotfiles/@TEMP ZSH/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh'
 # source '/home/nitro/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh'
 source '/home/nitro/dotfiles/zsh-custom/.config/zsh-custom/catppuccin_mocha-zsh-syntax-highlighting.zsh'
-
+source '/home/nitro/.config/zsh-custom/catppuccin_mocha-zsh-syntax-highlighting.zsh'
 # Load the Syntax Highlighting Plugin
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source /home/nitro/.config/zsh-custom/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
 
 # 2.14.2026 idk oh-my-posh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
@@ -172,3 +178,51 @@ alias hw="hwinfo --short"
 
 # yazi
 alias files="yazi"
+
+
+# 7.25.2026 - 1:17a haha
+alias hothmount='sshfs nitro@192.168.1.154:/home/nitro ~/nebulon \
+-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3'
+
+alias hothumount='fusermount3 -u ~/server'
+
+
+# znap - 7.25.2026
+# Download Znap, if it's not there yet.
+#[[ -r /home/nitro/.config/zsh-custom/znap/znap.zsh ]] ||
+#    git clone --depth 1 -- \
+#        https://github.com/marlonrichert/zsh-snap.git ~/.config/zsh-custom/znap
+# source ~/.config/zsh-custom/znap/znap.zsh  # Start Znap
+
+# `znap prompt` makes your prompt visible in just 15-40ms!
+# znap prompt sindresorhus/pure
+
+# `znap source` starts plugins.
+# znap source marlonrichert/zsh-autocomplete
+
+
+## binds ----------------------
+# Accept zsh-autosuggestion with Tab key - gem overview lol - 7.25.2026 2:17a
+# bindkey '^I' autosuggest-accept
+# more:
+bindkey '^I'      autosuggest-accept
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+
+
+
+
+# PLUGINS -------------
+# moved 7.25.2026
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+
+# source /home/nitro/.config/zsh-custom/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+
