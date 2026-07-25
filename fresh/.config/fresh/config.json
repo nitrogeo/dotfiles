@@ -1,3 +1,15 @@
 {
-  "theme": "catppuccin-macchiato"
+  "theme": "catppuccin-macchiato",
+  "file_explorer": {
+    "show_hidden": true
+  },
+  "keybindings": [
+    {
+      "key": "d",
+      "modifiers": [
+        "alt"
+      ],
+      "action": "switch_to_previous_tab"
+    }
+  ]
 }
