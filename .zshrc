@@ -184,7 +184,7 @@ alias files="yazi"
 alias hothmount='sshfs nitro@192.168.1.154:/home/nitro ~/nebulon \
 -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3'
 
-alias hothumount='fusermount3 -u ~/server'
+alias hothumount='fusermount3 -u ~/nebulon'
 
 
 # znap - 7.25.2026
