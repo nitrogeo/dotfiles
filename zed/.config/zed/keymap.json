@@ -1,0 +1,179 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "!Terminal",
+    "unbind": {
+      "ctrl-shift-c": "collab_panel::ToggleFocus",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-shift-c": "editor::CopyPath",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-s": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-b": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-d": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-alt-b": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "alt-z": "editor::ToggleSoftWrap",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-alt-j": "multi_workspace::ToggleWorkspaceSidebar",
+    },
+  },
+  {
+    "context": "MarkdownPreview",
+    "bindings": {
+      "alt-j": "markdown::ScrollToBottom",
+    },
+  },
+  {
+    "context": "MarkdownPreview",
+    "unbind": {
+      "ctrl-end": "markdown::ScrollToBottom",
+    },
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "unbind": {
+      "alt-j": "editor::AcceptNextLineEditPrediction",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-shift-o": "workspace::AddFolderToProject",
+    },
+  },
+  {
+    "context": "RecentProjects || RecentProjects > Picker > Editor",
+    "unbind": {
+      "ctrl-shift-a": "workspace::AddFolderToProject",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "unbind": {
+      "ctrl-shift-o": "outline::Toggle",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-g": "git_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-shift-g": "git_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-shift-e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+      "bindings": {
+      "alt-m": "editor::ToggleMinimap"
+    }
+  },
+  {
+    "bindings": {
+      "alt-t": "editor::ToggleTabBar"
+    }
+  },
+  {
+    "context": "Editor && extension == md",
+    "bindings": {
+      "alt-p": "markdown::OpenPreviewToTheSide"
+    }
+  },
+  {
+    "context": "Editor && extension == md",
+    "unbind": {
+      "ctrl-k v": "markdown::OpenPreviewToTheSide"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-shift-c": "project_panel::CollapseAllEntries"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "unbind": {
+      "ctrl-left": "project_panel::CollapseAllEntries"
+    }
+  },
+  {
+    "unbind": {
+      "ctrl-shift-w": "workspace::CloseWindow"
+    }
+  },
+  {
+    "context": "Editor && extension == md",
+    "unbind": {
+      "ctrl-shift-v": "markdown::OpenPreview"
+    }
+  },
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "bindings": {
+      "alt-shift-e": "pane::RevealInProjectPanel"
+    }
+  }
+]

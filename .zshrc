@@ -67,7 +67,7 @@ ZSH_THEME="robbyrussell"
 ZSH_CUSTOM=/home/nitro/.config/zsh-custom/
 
 
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zoxide)
 
 
 
@@ -184,9 +184,7 @@ alias files="yazi"
 alias hothmount='sshfs nitro@192.168.1.154:/home/nitro ~/nebulon \
 -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3'
 
-alias hothumount='fusermount3 -u ~/nebulon'
-
-
+alias hothumount='fusermount3 -u 
 # znap - 7.25.2026
 # Download Znap, if it's not there yet.
 #[[ -r /home/nitro/.config/zsh-custom/znap/znap.zsh ]] ||
