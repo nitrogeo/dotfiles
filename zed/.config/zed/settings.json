@@ -10,8 +10,8 @@
   "diff_view_style": "unified",
   "languages": {
     "Markdown": {
-      "show_edit_predictions": false
-    }
+      "show_edit_predictions": false,
+    },
   },
   "remove_trailing_whitespace_on_save": false,
   "ssh_connections": [
@@ -139,4 +139,5 @@
     "light": "One Light",
     "dark": "Duskfox - blurred",
   },
+  "git.add_all_on_commit": true,
 }
