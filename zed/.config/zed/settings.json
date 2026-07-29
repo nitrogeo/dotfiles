@@ -7,10 +7,24 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ui_font_size": 11.75,
+  "ui_font_weight": 400.0,
   "diff_view_style": "unified",
+  "tab_size": 2,
+  "format_on_save": "off",
+  "hard_tabs": false,
+  "lsp_document_colors": "background",
+  "buffer_font_fallbacks": ["Noto Color Emoji"],
+
   "languages": {
     "Markdown": {
       "show_edit_predictions": false,
+    },
+    "QML": {
+      "tab_size": 2,
+    },
+    "YAML": {
+      "tab_size": 2,
     },
   },
   "remove_trailing_whitespace_on_save": false,
@@ -85,8 +99,8 @@
     "show_branch_status_icon": true,
   },
   "status_bar": {
-    "line_endings_button": true,
-    "active_encoding_button": "enabled",
+    "line_endings_button": false,
+    "active_encoding_button": "non_utf8",
     "active_language_button": true,
     "show_active_file": true,
   },
@@ -132,12 +146,11 @@
     },
   },
   "buffer_font_family": "CommitMono Nerd Font Mono",
-  "ui_font_size": 14.0,
   "buffer_font_size": 13.0,
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Duskfox - blurred",
+    "dark": "Bearded Theme Vivid Purple",
   },
   "git.add_all_on_commit": true,
 }

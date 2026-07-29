@@ -168,6 +168,13 @@ export PATH="$PATH:/home/nitro/.lmstudio/bin"
 
 
 
+
+
+
+
+
+
+
 # aliases
 # 7.23.2026
 # fastfetch --short

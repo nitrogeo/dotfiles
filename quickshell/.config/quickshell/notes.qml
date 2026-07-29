@@ -1,0 +1,35 @@
+
+// # 7.29.2026
+
+// variables!
+Item {
+  property string textColor: "#f0f0f0"
+  property string bkgColor: "#130e29"
+  property int count: 10
+  property bool isActive: true
+  property real price: 19.99
+  property var dynamicVar: [1, 2, 3] // Holds any data type
+}
+
+
+// colors.css from waybar vro
+
+/* colors.css */
+/* @define-color main-color #cad3f5; */
+@define-color main-color #d2d2d2;
+@define-color second-color #abb5d7;
+
+@define-color text-main #cad3f5;
+
+@define-color main-purple #c6a0f6;
+@define-color second-purple #9a85b3;
+
+/* 7.8.2026 */
+@define-color marooon #ee99a0;
+@define-color ppink #f5bde6;
+@define-color xpink #f6a0df;
+@define-color mauve #c6a0f6;
+@define-color bblue #8aadf4;
+@define-color xsky #77cdf2;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
