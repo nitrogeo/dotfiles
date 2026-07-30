@@ -198,5 +198,10 @@
     "unbind": {
       "ctrl-k ctrl-s": "zed::OpenKeymap"
     }
+  },
+  {
+    "bindings": {
+      "alt-shift-v": "workspace::ToggleVimMode"
+    }
   }
 ]

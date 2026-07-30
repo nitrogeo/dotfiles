@@ -191,7 +191,8 @@ alias files="yazi"
 alias hothmount='sshfs nitro@192.168.1.154:/home/nitro ~/nebulon \
 -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3'
 
-alias hothumount='fusermount3 -u 
+alias hothunmount='fusermount3 -u ~/nebulon'
+
 # znap - 7.25.2026
 # Download Znap, if it's not there yet.
 #[[ -r /home/nitro/.config/zsh-custom/znap/znap.zsh ]] ||
@@ -204,6 +205,8 @@ alias hothumount='fusermount3 -u
 
 # `znap source` starts plugins.
 # znap source marlonrichert/zsh-autocomplete
+
+
 
 
 ## binds ----------------------
@@ -229,5 +232,3 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 # Add wisely, as too many plugins slow down shell startup.
 
 # source /home/nitro/.config/zsh-custom/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-
