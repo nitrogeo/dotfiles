@@ -12,8 +12,9 @@ RowLayout {
       
     Rectangle {
       id: wsButton
-      required property in
-    }
+      required property int index // index of the workspace
+
+      property var ws: Hyprland.workspaces.values
     }
   }
 }
