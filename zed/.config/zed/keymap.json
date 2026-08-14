@@ -203,5 +203,40 @@
     "bindings": {
       "alt-shift-v": "workspace::ToggleVimMode"
     }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-;": "search::SelectPreviousMatch"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "shift-f3": "search::SelectPreviousMatch"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-'": "search::SelectNextMatch"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "f3": "search::SelectNextMatch"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-k w": [
+        "pane::CloseAllItems",
+        {
+          "close_pinned": false
+        }
+      ]
+    }
   }
 ]

@@ -5,7 +5,8 @@ import "."
 Text {
   // anchors.centerIn: parent
   // binds text to property =  "property binding", like a spreadsheet cell with a formula
-  text: Qt.formatDateTime(clock.date, "hh:mm A")
+  // text: Qt.formatDateTime(clock.date, "hh:mm A")
+  text: Qt.formatDateTime(clock.date, "ddd MMM d   |   hh:mm A")
   color: Theme.foreground
 
   font {

@@ -45,22 +45,25 @@ matches:
   # ⌄⌄ CUSTOM ⌄⌄ ////////////////////////////////////////
 
   # emails
+  # me
   - trigger: "//no"
     replace: "nitrogeo@outlook.com"
 
   - trigger: "//fg"
     replace: "froxgames@outlook.com"
 
-  - triggers: 
-    - "//hc"
-    - "//hb"
-    replace: "honeycombburrow@gmail.com"
-
   - trigger: "//nf"
     replace: "nitrofrox@gmail.com"
 
   - trigger: "//na"
     replace: "nitro.apps@outlook.com"
+
+  # fam
+  - triggers: 
+    - "//hc"
+    - "//hb"
+    replace: "honeycombburrow@gmail.com"
+
   - trigger: "//e2"
     replace: "e2squared78@outlook.com"
 
@@ -71,6 +74,12 @@ matches:
   - trigger: "//kn"
     replace: "K1404887"
 
+  # mom
+  - trigger: "//mm"
+    replace: "m.muse73@outlook.com"
+
+  - trigger: "//m4"
+    replace: "muse4reading@gmail.com"
 
 
   # emojis

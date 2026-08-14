@@ -182,7 +182,7 @@
       "tooltip-format": "{essid} // {ifname} via {gwaddr} // {ipaddr}/{cidr}",
 
       "format-linked": "{ifname} (No IP) ",
-      "format-disconnected": "Disconnected ⚠",
+      "format-disconnected": "  ⚠",
 
       /* "format-alt": "{ifname}:{essid} // {ipaddr}/{cidr}" */
       "format-alt": "  {essid}  //  {signalStrength}%"
