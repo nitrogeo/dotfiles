@@ -3,6 +3,7 @@ pragma Singleton
 import QtQuick
 
 QtObject {
+    readonly property color bgBlur: "#1d1e20f0"
     readonly property color background: "#130e29" // void purple
     readonly property color foreground: "#f0f0f0" // off white
     
@@ -10,7 +11,8 @@ QtObject {
     readonly property color accentDark: "#11496e" // idk?/
     readonly property color accentLight: "#5AC8FF" // light neon blue
 
-    readonly property color greyTest: "#594964"
+    // readonly property color greyTest: "#594964"
+    readonly property color bgText: "#796388"
     
     
     readonly property color pink: "#f65298" // pink
@@ -20,6 +22,9 @@ QtObject {
     readonly property color purple: "#5b4dc5" // purple
     readonly property color lightPurple: "#715AD6" // light purple
     readonly property color lighterPurple: "#a273e8" // lighter purple - a24 lol
+
+    readonly property color purpleDark: "#3e234d" // bkg rectangle purple
+    readonly property color purpleLight2: "#ae83c7" // light purple
     
     readonly property color blue: "#8aadf4" // waybar blue lol
 

@@ -142,14 +142,36 @@ matches:
 
 
   # dyanmic
-  - trigger: ":now"
+  - trigger: "!ti"
+    replace: "{{mytime}}"
+    
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%H:%M%p"
+  - trigger: "//ti"
     replace: "{{mytime}}"
     vars:
       - name: mytime
         type: date
         params:
           format: "%H:%M%p"
-
+  - trigger: "//date"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%m.%d.%Y"
+  - trigger: "!date"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%m.%d.%Y"
+          
 
 # misc idk
   - trigger: "/gv"
@@ -157,5 +179,3 @@ matches:
 
   - trigger: "(tm)"
     replace: "™"
-
-

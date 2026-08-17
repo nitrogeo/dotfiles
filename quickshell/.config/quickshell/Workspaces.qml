@@ -34,7 +34,7 @@ RowLayout {
       implicitHeight:  22
       radius: 6
 
-      color: isActive ? Theme.accentDark : (ws ? Theme.background : "transparent") // if the workspace is active, use accent color; otherwise, use background color - copilot
+      color: isActive ? Theme.accentDark : (ws ? Theme.purpleDark : "transparent") // if the workspace is active, use accent color; otherwise, use background color - copilot
       // wait this is for the rectangle around the workspace button, not the text. - me + copilot
       // So if the workspace is active, use accent color; if the workspace exists but is not active, use background color; if the workspace does not exist, make it transparent - copilot
       //
@@ -55,7 +55,7 @@ RowLayout {
         id: label
         anchors.centerIn: parent
         text: wsButton.index + 1
-        color: wsButton.isActive ? Theme.accent : (wsButton.ws ? Theme.foreground : Theme.greyTest)
+        color: wsButton.isActive ? Theme.accent : (wsButton.ws ? Theme.purpleLight2 : Theme.bgText)
 
         font {
           family: Theme.fontMain

@@ -22,7 +22,17 @@
     "Editorconfig": ["conf"]
   },
   "confirm_quit": true,
+  "gutter": {
+    "line_numbers": true,
+    "runnables": true,
+    "breakpoints": true,
+    "folds": true,
+    "min_line_number_digits": 4,
+    // "git_gutter_width": null
+  },
 
+
+  
   "languages": {
     "Markdown": {
       "show_edit_predictions": false,

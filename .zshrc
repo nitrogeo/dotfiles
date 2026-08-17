@@ -166,6 +166,8 @@ export PATH=/home/nitro/.opencode/bin:$PATH
 export PATH="$PATH:/home/nitro/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# 8.14.2026 6:07 (ha) pm - adding intellij to path lol
+export PATH="$PATH:/opt/intellij-idea/bin/"
 
 
 

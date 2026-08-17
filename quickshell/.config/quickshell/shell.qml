@@ -32,7 +32,7 @@ ShellRoot { // root object; not the visual itself, just contains everything
         
       implicitHeight: 25
       
-      color: Theme.background // - void purple
+      color: Theme.bgBlur // - void purple
       
       RowLayout {
         anchors.fill: parent
