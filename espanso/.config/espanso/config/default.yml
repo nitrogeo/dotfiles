@@ -1,6 +1,6 @@
 # espanso configuration file
 
-# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/config.schema.json
+yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/config.schema.json
 
 # For a complete introduction, visit the official docs at: https://espanso.org/docs/
 
@@ -55,3 +55,6 @@ search_shortcut: ctrl + alt + space
 toggle_key: OFF
 
 show_notifications: false
+
+# 8.18.2026
+undo_backspace: true

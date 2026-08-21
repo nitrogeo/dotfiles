@@ -8,7 +8,7 @@
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 
-# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
 
 matches:
   # Simple text replacement
@@ -45,7 +45,7 @@ matches:
   # ⌄⌄ CUSTOM ⌄⌄ ////////////////////////////////////////
 
   # emails
-  # me
+  ## me
   - trigger: "//no"
     replace: "nitrogeo@outlook.com"
 
@@ -58,7 +58,7 @@ matches:
   - trigger: "//na"
     replace: "nitro.apps@outlook.com"
 
-  # fam
+  ## fam
   - triggers: 
     - "//hc"
     - "//hb"
@@ -68,7 +68,7 @@ matches:
     replace: "e2squared78@outlook.com"
 
 
-  # school email + username
+  ## school email + username
   - trigger: "//ke"
     replace: "K1404887@students.katyisd.org"
   - trigger: "//kn"
@@ -102,7 +102,7 @@ matches:
   - trigger: "/peak"
     replace: "🗣️🔥"
 
-# 5.8.2026
+  #> 5.8.2026
   - trigger: ":nerd"
     replace: "🤓☝"
 
@@ -139,6 +139,10 @@ matches:
 
   - trigger: "//oc"
     replace: "opencode"
+ 
+  # 8.19.2026   
+  - trigger: "//dcu"
+    replace: "docker compose up -d"
 
 
   # dyanmic
@@ -149,14 +153,14 @@ matches:
       - name: mytime
         type: date
         params:
-          format: "%H:%M%p"
+          format: "%I:%M%P"
   - trigger: "//ti"
     replace: "{{mytime}}"
     vars:
       - name: mytime
         type: date
         params:
-          format: "%H:%M%p"
+          format: "%I:%M%P"
   - trigger: "//date"
     replace: "{{mytime}}"
     vars:
@@ -171,6 +175,13 @@ matches:
         type: date
         params:
           format: "%m.%d.%Y"
+  - trigger: "!dati"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%m.%d.%Y %I:%M%P"
           
 
 # misc idk
@@ -179,3 +190,12 @@ matches:
 
   - trigger: "(tm)"
     replace: "™"
+
+
+# ips (hoth lol)
+  - trigger: "//tsip"
+    replace: "http://100.125.114.56:"
+  - trigger: "//lanip"
+    replace: "http://192.168.154:"
+  - trigger: "//ts2ip"
+    replace: "http://nebulon.tail6fbab9.ts.net:"
