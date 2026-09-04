@@ -93,13 +93,13 @@ matches:
     replace: "🙏"
   - trigger: "/:pen"
     replace: "😔"
-  - trigger: ":vro"
+  - trigger: "/:vro"
     replace: "😭🙏🥀"
   - trigger: ":TwT"
     replace: "😭"
   - trigger: ":twt"
     replace: "😭"
-  - trigger: "/peak"
+  - trigger: "/:peak"
     replace: "🗣️🔥"
 
   #> 5.8.2026
@@ -143,45 +143,38 @@ matches:
   # 8.19.2026   
   - trigger: "//dcu"
     replace: "docker compose up -d"
+  # 8.21.2026   
+  - trigger: "//dc"
+    replace: "docker compose up -d"
 
 
   # dyanmic
-  - trigger: "!ti"
+  - triggers: 
+    - "!ti"
+    - "//ti"
     replace: "{{mytime}}"
     
     vars:
       - name: mytime
         type: date
         params:
-          format: "%I:%M%P"
-  - trigger: "//ti"
+          format: "%I:%M%P "
+  - triggers: 
+    - "//date"
+    - "!date"
     replace: "{{mytime}}"
     vars:
       - name: mytime
         type: date
         params:
-          format: "%I:%M%P"
-  - trigger: "//date"
-    replace: "{{mytime}}"
-    vars:
-      - name: mytime
-        type: date
-        params:
-          format: "%m.%d.%Y"
-  - trigger: "!date"
-    replace: "{{mytime}}"
-    vars:
-      - name: mytime
-        type: date
-        params:
-          format: "%m.%d.%Y"
+          format: "%m.%d.%Y "
   - trigger: "!dati"
     replace: "{{mytime}}"
     vars:
       - name: mytime
         type: date
         params:
-          format: "%m.%d.%Y %I:%M%P"
+          format: "%m.%d.%Y %I:%M%P "
           
 
 # misc idk
@@ -196,6 +189,6 @@ matches:
   - trigger: "//tsip"
     replace: "http://100.125.114.56:"
   - trigger: "//lanip"
-    replace: "http://192.168.154:"
-  - trigger: "//ts2ip"
+    replace: "http://192.168.1.154:"
+  - trigger: "//tsurl"
     replace: "http://nebulon.tail6fbab9.ts.net:"

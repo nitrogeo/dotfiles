@@ -209,6 +209,13 @@ alias hothunmount='fusermount3 -u ~/nebulon'
 # znap source marlonrichert/zsh-autocomplete
 
 
+# 08.23.2026 
+alias storagereport="~/scripts/storage-report.sh"
+
+
+
+
+
 
 
 ## binds ----------------------

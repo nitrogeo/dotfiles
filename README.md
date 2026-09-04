@@ -11,6 +11,13 @@ i use arch btw
 
 <br>
 
+# info
+
+## binds
+here: [keybinds](keybinds.md)
+
+
+
 ## (some) dependencies:
 to use these yourself, you can likely use GNU Stow to stow the folders to your system to take effect.
 

@@ -201,7 +201,7 @@
   },
   {
     "bindings": {
-      "alt-shift-v": "workspace::ToggleVimMode"
+      "ctrl-alt-shift-v": "workspace::ToggleVimMode"
     }
   },
   {

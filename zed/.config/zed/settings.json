@@ -11,7 +11,7 @@
   "ui_font_size": 11.75,
   "ui_font_weight": 400.0,
   "diff_view_style": "unified",
-  "tab_size": 2,
+  "tab_size": 4,
   "format_on_save": "off",
   "hard_tabs": false,
   "lsp_document_colors": "background",
@@ -19,7 +19,7 @@
   "file_types": {
     // "C++": ["c"],
     // "TOML": ["MyLockFile"]
-    "Editorconfig": ["conf"]
+    "Editorconfig": ["conf"],
   },
   "confirm_quit": true,
   "gutter": {
@@ -31,8 +31,6 @@
     // "git_gutter_width": null
   },
 
-
-  
   "languages": {
     "Markdown": {
       "show_edit_predictions": false,
@@ -88,7 +86,9 @@
   "ui_font_family": "Inter",
   "cli_default_open_behavior": "existing_window",
   "agent_servers": {
-    
+    "github-copilot-cli": {
+      "type": "registry",
+    },
   },
   "buffer_line_height": "standard",
   "calls": {
@@ -167,5 +167,5 @@
     "light": "One Light",
     "dark": "Bearded Theme HC Minuit",
   },
-  "git.add_all_on_commit": true,
+  // "git.add_all_on_commit": true,
 }
