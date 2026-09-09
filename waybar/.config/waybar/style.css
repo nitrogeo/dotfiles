@@ -254,10 +254,18 @@ window#waybar {
 }
 
 
+/* Style the toggle icon */
+#custom-tray-icon {
+    padding: 0 12px;
+    color: #ffffff;
+}
 
+/* Optional: Add a visual cue when the drawer opens */
+#group-collapsible-tray.expanded #custom-tray-icon {
+    color: #ff79c6; /* Changes icon color when expanded */
+}
 
-
-
-
-
-
+/* Style the tray inside the drawer */
+#tray {
+    padding: 0 6px;
+}

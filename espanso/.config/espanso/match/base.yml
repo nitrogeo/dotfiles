@@ -158,7 +158,7 @@ matches:
       - name: mytime
         type: date
         params:
-          format: "%I:%M%P "
+          format: "%I:%M%P"
   - triggers: 
     - "//date"
     - "!date"
@@ -167,14 +167,14 @@ matches:
       - name: mytime
         type: date
         params:
-          format: "%m.%d.%Y "
+          format: "%m.%d.%Y"
   - trigger: "!dati"
     replace: "{{mytime}}"
     vars:
       - name: mytime
         type: date
         params:
-          format: "%m.%d.%Y %I:%M%P "
+          format: "%m.%d.%Y %I:%M%P"
           
 
 # misc idk

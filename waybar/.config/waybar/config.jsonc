@@ -19,7 +19,7 @@
 
   "modules-left": ["custom/archicon", "hyprland/workspaces", "hyprland/window"/*, "wlr/taskbar"*/],
   "modules-center": ["mpris"],
-  "modules-right": ["cpu", "memory", "pulseaudio","pulseaudio#microphone", "battery", "network", "clock", "tray", "custom/swaync"],
+  "modules-right": ["cpu", "memory", "pulseaudio","pulseaudio#microphone", "battery", "network", "clock", "group/mini-tray", "custom/swaync"],
   
   
   "custom/archicon": {
@@ -89,12 +89,36 @@
   */
 
   /* not new */
+  // nvm - 09.06.2026
 
+  "group/mini-tray": {
+      "orientation": "horizontal",
+      "drawer": {
+          "transition-duration": 500,
+          "transition-left-to-right": false
+      },
+      "modules": [
+          "custom/tray-icon", // The toggle button/anchor
+          "tray"               // The actual system tray
+      ]
+  },
+  
+  "custom/tray-icon": {
+      "format": "", // Choose any icon you like (e.g., an arrow or a box) // 
+      "tooltip": false,
+      "font-size": 30,
+  },
+  
   "tray": {
       "icon-size": 18,
       "spacing": 10,
       "ignore-list": ["espanso", "Espanso Sync Tool"] /* fix espanso sync tool appearing in waybar for some reason idfk */
   },
+
+
+
+
+  
 
   "cpu" : {
     "interval": 1,
