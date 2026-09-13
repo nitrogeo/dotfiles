@@ -213,6 +213,12 @@ alias hothunmount='fusermount3 -u ~/nebulon'
 alias storagereport="~/scripts/storage-report.sh"
 
 
+# 09.12.2026
+alias screenshots-sort="~/scripts/screenshots-sort.sh"
+# 09.13.2026
+alias downloads-clean="~/scripts/downloads-clean.sh"
+
+
 
 
 
