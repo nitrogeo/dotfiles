@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # updated 8.14.2026
+# btw 09.13.2026
+#   this only sorts loose files, not (sub)folders or the files inside them.
 
 # Define paths
 DOWNLOADS="$HOME/Downloads"
