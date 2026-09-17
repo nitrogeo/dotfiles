@@ -8,7 +8,8 @@
     "description": "Compiles and runs the currently active Java source file",
     "tags": ["java"],
     "show_on_no_args": true
-  }
+  },
+
   {
     "label": "Example task",
     "command": "for i in {1..5}; do echo \"Hello $i/5\"; sleep 1; done",

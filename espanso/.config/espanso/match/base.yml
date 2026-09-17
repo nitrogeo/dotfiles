@@ -152,6 +152,7 @@ matches:
   - triggers: 
     - "!ti"
     - "//ti"
+    - "!TI"
     replace: "{{mytime}}"
     
     vars:
@@ -162,13 +163,16 @@ matches:
   - triggers: 
     - "//date"
     - "!date"
+    - "!DATE"
     replace: "{{mytime}}"
     vars:
       - name: mytime
         type: date
         params:
           format: "%m.%d.%Y"
-  - trigger: "!dati"
+  - triggers: 
+    - "!dati"
+    - "!DATI"
     replace: "{{mytime}}"
     vars:
       - name: mytime
