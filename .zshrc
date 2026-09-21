@@ -89,7 +89,7 @@ fi
 export EDITOR='fresh'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
-# else
+# elsebase
 #   export EDITOR='nvim'
 # fi
 

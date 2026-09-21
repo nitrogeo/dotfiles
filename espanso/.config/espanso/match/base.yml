@@ -101,6 +101,10 @@ matches:
     replace: "😭"
   - trigger: "/:peak"
     replace: "🗣️🔥"
+  - trigger: "/:hold"
+    replace: "🥹"
+  - trigger: "/:plea"
+    replace: "🥺"
 
   #> 5.8.2026
   - trigger: ":nerd"

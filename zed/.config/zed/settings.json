@@ -44,6 +44,9 @@
     "Java": {
       "tab_size": 4,
     },
+    "HTML": {
+      "tab_size": 2,
+    },
   },
   "remove_trailing_whitespace_on_save": false,
   "ssh_connections": [
