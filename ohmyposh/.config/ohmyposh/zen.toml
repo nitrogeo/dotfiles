@@ -63,7 +63,7 @@ final_space = true
   type = 'rprompt'
 
   [[blocks.segments]]
-    template = 'at <p:blue><b>{{ .CurrentDate | date "03:04 PM" }}</b></>'
+    template = 'at <p:blue><b>{{ .CurrentDate | date "03:04:05 PM" }}</b></> on <p:blue><b>{{ .CurrentDate | date "01.02.2006" }}</b></>'
     foreground = 'p:white'
     background = 'transparent'
     type = 'time'
