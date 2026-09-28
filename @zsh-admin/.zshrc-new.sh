@@ -1,0 +1,309 @@
+# ############################## info ##############################
+
+# 09.22.2026 info btw:
+# dont reference ~/dotfiles here bc thats for like huamns and the "real" ~/.config dir is the "real" one for software lol
+# also using *one* highligher
+
+
+
+
+# 09.22.2026 - paths/dirs
+
+# # Load the Syntax Highlighting Plugin
+# source $HOME/.config/zsh-custom/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# Path to your Oh My Zsh installation.
+# export ZSH="$HOME/.oh-my-zsh"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=$HOME/.oh-my-zsh/plugins/
+# ZSH_CUSTOM=$HOME/.config/zsh-custom/
+
+
+# Load the Syntax Highlighting Plugin
+# source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+#### source $HOME/.config/zsh-custom/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+
+# 2.14.2026 idk oh-my-posh
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ############### admin ###############
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+#ZSH_THEME="robbyrussell"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+# enabled 09.22.2026 isk could be good lol
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=$HOME/.oh-my-zsh/plugins/
+ZSH_CUSTOM=$HOME/.config/zsh-custom/
+
+
+
+
+
+
+
+
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+export EDITOR='fresh'
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# elsebase
+#   export EDITOR='nvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
+# 1.26.2026 - from gemini autocleanup - https://gemini.google.com/app/6e34b9a86f6665a3
+
+# Sunday Cleanup Prompt (Day 7 is Sunday)
+# if [ $(date +%u) -eq 7 ]; then
+#    ~/scripts/clean-arch.sh auto
+# fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ############### plugins / my (main) configs ############### ------------------------------------------------------------------------------------
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+
+# source $HOME/.config/zsh-custom/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+
+plugins=(git zsh-autosuggestions)
+# plugins=(git zsh-autosuggestions zoxide)
+
+
+# eval "$(zoxide init zsh)"
+# source $ZSH/oh-my-zsh.sh
+# if [ -f $ZSH/oh-my-zsh.sh ]; then
+# 	source $ZSH/oh-my-zsh.sh
+# fi
+
+
+# misc
+
+# Load the Catppuccin Theme
+# source $HOME/.config/@themes/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+# source '$HOME/Documents/[1] developer + git~/dotfiles/@TEMP ZSH/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh'
+# source '$HOME/zsh-themes/catppuccin_mocha-zsh-syntax-highlighting.zsh'
+# source '$HOME/dotfiles/zsh-custom/.config/zsh-custom/catppuccin_mocha-zsh-syntax-highlighting.zsh'
+
+# source '$HOME/.config/zsh-custom/catppuccin_mocha-zsh-syntax-highlighting.zsh'
+
+
+# Load the Syntax Highlighting Plugin
+# source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $HOME/.config/zsh-custom/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# 09.22.2026 dont reference ~/dotfiles here bc thats for like huamns and the "real" ~/.config dir is the "real" one for software lol
+# also using *one* highligher
+
+
+
+# 2.14.2026 idk oh-my-posh
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+# 09.22.2026: "--strict" chatgpt said?? idk vro; threw error
+
+# eval "$($linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Created by `pipx` on 2026-04-19 22:18:08
+export PATH="$PATH:$HOME/.local/bin"
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# 8.14.2026 6:07 (ha) pm - adding intellij to path lol
+export PATH="$PATH:/opt/intellij-idea/bin/"
+
+
+
+
+
+
+
+
+
+
+# ############### aliases ###############
+# 7.23.2026
+# fastfetch --short
+alias ff="fastfetch"
+
+# hardware info --short
+alias hw="hwinfo --short"
+
+# yazi
+alias files="yazi"
+
+
+# 7.25.2026 - 1:17a haha
+alias hothmount='sshfs nitro@192.168.1.154:/home/nitro ~/nebulon \
+-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3'
+
+alias hothunmount='fusermount3 -u ~/nebulon'
+
+# znap - 7.25.2026
+# Download Znap, if it's not there yet.
+#[[ -r $HOME/.config/zsh-custom/znap/znap.zsh ]] ||
+#    git clone --depth 1 -- \
+#        https://github.com/marlonrichert/zsh-snap.git ~/.config/zsh-custom/znap
+# source ~/.config/zsh-custom/znap/znap.zsh  # Start Znap
+
+# `znap prompt` makes your prompt visible in just 15-40ms!
+# znap prompt sindresorhus/pure
+
+# `znap source` starts plugins.
+# znap source marlonrichert/zsh-autocomplete
+
+
+# 08.23.2026 
+alias storagereport="~/scripts/storage-report.sh"
+
+
+# 09.12.2026
+alias screenshots-sort="~/scripts/screenshots-sort.sh"
+# 09.13.2026
+alias downloads-clean="~/scripts/downloads-clean.sh"
+
+# 09.23.2026
+alias clock-fix="~/scripts/clock-check.sh"
+
+
+
+
+
+
+
+
+
+
+
+
+# ############### binds ############### ----------------------
+# Accept zsh-autosuggestion with Tab key - gem overview lol - 7.25.2026 2:17a
+# bindkey '^I' autosuggest-accept
+# more:
+bindkey '^I'      autosuggest-accept
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+
