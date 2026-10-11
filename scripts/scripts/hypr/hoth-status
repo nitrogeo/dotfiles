@@ -1,0 +1,57 @@
+#!/bin/bash
+
+notify() {
+    hyprctl notify "$1" "$2" "$3" "$4"
+}
+
+declare -A last_state
+
+sleep 2
+
+while true; do
+    all_done=true
+
+    for stage in 1 2 3 4; do
+        service="hoth-stage${stage}.service"
+
+        state="$(systemctl show "$service" -p ActiveState --value)"
+        substate="$(systemctl show "$service" -p SubState --value)"
+        current="${state}:${substate}"
+
+        # Only react when this stage's state actually changes
+        if [[ "${last_state[$stage]}" != "$current" ]]; then
+
+            case "$current" in
+                active:exited)
+                    notify 5 5000 "rgb(9ece6a)" \
+                        "Hoth Stage $stage — complete"
+                    ;;
+
+                activating:*)
+                    notify 4 5000 "rgb(7aa2f7)" \
+                        "Hoth Stage $stage — starting"
+                    ;;
+
+                failed:*)
+                    notify 3 10000 "rgb(f7768e)" \
+                        "Hoth Stage $stage — FAILED"
+                    ;;
+            esac
+
+            last_state[$stage]="$current"
+        fi
+
+        # A stage is only considered unfinished if it isn't successfully complete
+        if [[ "$current" != "active:exited" ]]; then
+            all_done=false
+        fi
+    done
+
+    if [[ "$all_done" == true ]]; then
+        notify 5 8000 "rgb(9ece6a)" \
+            "Hoth — all startup stages complete"
+        exit 0
+    fi
+
+    sleep 3
+done
