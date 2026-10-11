@@ -1,7 +1,7 @@
 # ############################## PATHS & ENV ##############################
 
 export ZSH="$HOME/.oh-my-zsh"
-export ZSH_CUSTOM="$HOME/.config/@zsh-custom"
+# export ZSH_CUSTOM="$HOME/.config/@zsh-custom"
 
 export EDITOR='fresh'
 
