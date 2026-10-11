@@ -55,13 +55,29 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/nitro"],
+          "paths": [
+            "/home/nitro"
+          ]
         },
         {
-          "paths": ["/home/nitro/hoth"],
-        },
-      ],
+          "paths": [
+            "/home/nitro/hoth"
+          ]
+        }
+      ]
     },
+    {
+      "host": "10.50.20.19",
+      "username": "nitro",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/nitro/dotfiles"
+          ]
+        }
+      ]
+    }
   ],
   "tab_bar": {
     "show": true,
