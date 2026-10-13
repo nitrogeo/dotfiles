@@ -83,6 +83,11 @@ alias downloads-clean="~/scripts/downloads-clean.sh"
 alias clock="~/scripts/clock-check.sh"
 alias clock-fix="~/scripts/school-time-fix.sh"
 
+# 10.13.2026
+alias trash-check="echo 'echoing \`du -sh ~/.local/share/Trash\`...' && echo '=====' && du -sh ~/.local/share/Trash" 
+
+alias clean-arch\="~/scripts/clean-arch.sh"
+
 
 # ############################## AUTOSUGGESTIONS #########################
 

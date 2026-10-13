@@ -73,7 +73,17 @@
       "projects": [
         {
           "paths": [
+            "/home/nitro"
+          ]
+        },
+        {
+          "paths": [
             "/home/nitro/dotfiles"
+          ]
+        },
+        {
+          "paths": [
+            "/home/nitro/hoth"
           ]
         }
       ]
