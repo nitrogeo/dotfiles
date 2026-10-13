@@ -1,3 +1,7 @@
 .qmlls.ini
 znap
 .env
+@zsh-custom/.config/zsh-custom/marlonrichert/zsh-autocomplete/
+@zsh-custom/.config/zsh-custom/plugins/zsh-autosuggestions/
+@zsh-custom/.config/zsh-custom/sindresorhus/pure/
+@zsh-custom/.config/zsh-custom/zsh-autocomplete/
