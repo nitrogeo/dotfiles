@@ -19,7 +19,7 @@
 
   "modules-left": ["custom/archicon", "hyprland/workspaces", "hyprland/window"/*, "wlr/taskbar"*/],
   "modules-center": ["mpris"],
-  "modules-right": ["cpu", "memory", "pulseaudio","pulseaudio#microphone", "battery", "network", "clock", "group/mini-tray", "custom/swaync"],
+  "modules-right": ["cpu", "memory", "pulseaudio", "battery", "network", "clock", "group/mini-tray", "custom/swaync"],
   
   
   "custom/archicon": {
@@ -163,10 +163,14 @@
 
   "pulseaudio": {
       "format": "{icon} {volume}%",
-      "format-alt": "{icon} {volume}%  //  {desc}",
+      /* mic shows on click (format-alt), same pattern as the wifi SSID */
+      "format-alt": "{icon} {volume}%  //  {format_source}",
+      "format-source": "󰍮 {volume}%",
+      "format-source-muted": "󰍮 Muted",
       /* "format-bluetooth": "{icon} {volume}% {desc}", */
       "tooltip": false,
       "format-muted": " Muted",
+      "on-click-middle": "pamixer --default-source -t", // toggle mic mute
       /* "on-click": "hyprctl dispatch exec \"[workspace special:sinkswitch] kitty --class kitty-sinkswitch -e ~/scripts/sinkswitch.sh -exclude 46\"",
       */
 
@@ -187,6 +191,9 @@
       }
   },
 
+  /* 10.25.2026: mic volume now shows on click in "pulseaudio" above
+     (format-alt -> {format_source}), so this module is retired.
+     Its on-click mute lives on as on-click-middle on "pulseaudio".
   "pulseaudio#microphone": {
       "format": "{format_source}",
       "format-source": "󰍮 {volume}%",
@@ -196,6 +203,7 @@
       "on-scroll-down": "pamixer --default-source -d 5",
       "scroll-step": 5
   },
+  */
   
   "network": {
       // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -203,9 +211,9 @@
       "format-ethernet": "{ipaddr}/{cidr}  ",
 
       /* "tooltip-format": "{essid} - {ifname} via {gwaddr} ", */
-      "tooltip-format": "{essid} // {ifname} via {gwaddr} // {ipaddr}/{cidr}",
+      "tooltip-format": "{essid} at {signalStrength}% // {ifname} via {gwaddr} // {ipaddr}/{cidr}",
 
-      "format-linked": "{ifname} (No IP) ",
+      "format-linked": "{ifname} (No IP)",
       "format-disconnected": "  ⚠",
 
       /* "format-alt": "{ifname}:{essid} // {ipaddr}/{cidr}" */

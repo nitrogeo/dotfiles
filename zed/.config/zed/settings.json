@@ -7,6 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "disable_ai": true,
+  "language_models": {
+    "ollama": {
+      "api_url": "http://192.168.1.154:11434",
+      "auto_discover": true,
+    }
+  },
   "vim_mode": false,
   "ui_font_size": 11.75,
   "ui_font_weight": 400.0,
@@ -87,6 +94,18 @@
           ]
         }
       ]
+    },
+    {
+      "host": "10.20.210.75",
+      "username": "nitro",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/nitro/hoth"
+          ]
+        }
+      ]
     }
   ],
   "tab_bar": {
@@ -161,9 +180,10 @@
     "dock": "right",
   },
   "agent": {
+    "sidebar_side": "left",
     "show_turn_stats": true,
     "use_modifier_to_send": true,
-    "dock": "right",
+    "dock": "left",
     "favorite_models": [],
     "model_parameters": [],
   },
@@ -171,8 +191,11 @@
     "dock": "left",
   },
   "edit_predictions": {
+    "ollama": {
+      "api_url": "http://192.168.1.154:11434"
+    },
     "mode": "subtle",
-    "provider": "zed",
+    "provider": "ollama",
   },
   "when_closing_with_no_tabs": "keep_window_open",
   "icon_theme": {
