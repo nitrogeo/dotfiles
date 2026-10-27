@@ -1,0 +1,2 @@
+evdev:name:Wireless hotkeys:phys:HPQ6001/input0:ev:3:dmi:*:*
+ KEYBOARD_KEY_88=reserved

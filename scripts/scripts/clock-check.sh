@@ -105,14 +105,18 @@ trim() {
 # Manual entry flow (prefilled defaults)
 # ------------------------------------------------------------------
 manual_set_flow() {
-    # Prefill with current system values
-    local cur_year cur_month cur_day cur_hour cur_min cur_ampm
+    # Control autofill: 0 = no autofill for month/day/hour/minute (user must enter)
+    local PREFILL_DEFAULTS=0
+
+    # Always show current time for reference
+    local cur_year cur_month cur_day cur_hour cur_min cur_ampm cur_sec
     cur_year=$(date '+%Y')
-    cur_month=$(date '+%-m')  # no leading zero; we'll allow either
+    cur_month=$(date '+%-m')
     cur_day=$(date '+%-d')
-    cur_hour=$(date '+%-I')   # 12-hour, no leading zero
+    cur_hour=$(date '+%-I')
     cur_min=$(date '+%-M')
     cur_ampm=$(date '+%p')
+    cur_sec=$(date '+%S')
 
     echo ""
     echo "=== CURRENT TIME: $(date '+%A %B %d %Y %I:%M:%S %p %Z') ==="
@@ -122,49 +126,58 @@ manual_set_flow() {
     echo ""
 
     # Month (with colored heading)
+    local month_default=""
+    [[ $PREFILL_DEFAULTS -eq 1 ]] && month_default="$cur_month"
     local month_input
     echo "$(gum style --foreground 212 --bold '[MONTH]' --padding "0 1") — Month (1-12, e.g. 10 = October) | $(gum style --foreground 226 --bold "Current: $cur_month")"
-    month_input=$(gum input --placeholder "Enter month number (or blank to keep $cur_month)" --value "$cur_month" --width 30)
+    month_input=$(gum input --placeholder "Enter month 1-12 (required)" --value "$month_default" --width 30)
     local status=$?
     if [[ $status -ne 0 ]]; then echo "Input cancelled."; return 1; fi
     month_input=$(trim "$month_input")
     [[ -z "$month_input" ]] && month_input="$cur_month"
 
     # Day (with colored heading)
+    local day_default=""
+    [[ $PREFILL_DEFAULTS -eq 1 ]] && day_default="$cur_day"
     echo "$(gum style --foreground 63 --bold '[DAY]' --padding "0 1") — Day of month (1-31, e.g. 25 = the 25th) | $(gum style --foreground 226 --bold "Current: $cur_day")"
     local day_input
-    day_input=$(gum input --placeholder "Enter day (or blank to keep $cur_day)" --value "$cur_day" --width 30)
+    day_input=$(gum input --placeholder "Enter day 1-31 (required)" --value "$day_default" --width 30)
     status=$?
     if [[ $status -ne 0 ]]; then echo "Input cancelled."; return 1; fi
     day_input=$(trim "$day_input")
-    [[ -z "$day_input" ]] && day_input="$cur_day"
+    [[ -z "$day_input" ]] && { echo "Day is required."; return 1; }
 
-    # Year (with colored heading)
+    # Year — always autofilled (user usually knows current year even when clock is wrong)
+    local year_default="$cur_year"
     echo "$(gum style --foreground 45 --bold '[YEAR]' --padding "0 1") — 4-digit year (e.g. 2026) | $(gum style --foreground 226 --bold "Current: $cur_year")"
     local year_input
-    year_input=$(gum input --placeholder "Enter year (or blank to keep $cur_year)" --value "$cur_year" --width 30)
+    year_input=$(gum input --placeholder "Enter year 4 digits (autofilled: $cur_year)" --value "$year_default" --width 30)
     status=$?
     if [[ $status -ne 0 ]]; then echo "Input cancelled."; return 1; fi
     year_input=$(trim "$year_input")
     [[ -z "$year_input" ]] && year_input="$cur_year"
 
     # Hour (with colored heading)
+    local hour_default=""
+    [[ $PREFILL_DEFAULTS -eq 1 ]] && hour_default="$cur_hour"
     echo "$(gum style --foreground 226 --bold '[HOUR]' --padding "0 1") — Hour (1-12, e.g. 3 = 3:00) | $(gum style --foreground 212 --bold "Current: $cur_hour")"
     local hour_input
-    hour_input=$(gum input --placeholder "Enter hour 1-12 (or blank to keep $cur_hour)" --value "$cur_hour" --width 30)
+    hour_input=$(gum input --placeholder "Enter hour 1-12 (required)" --value "$hour_default" --width 30)
     status=$?
     if [[ $status -ne 0 ]]; then echo "Input cancelled."; return 1; fi
     hour_input=$(trim "$hour_input")
-    [[ -z "$hour_input" ]] && hour_input="$cur_hour"
+    [[ -z "$hour_input" ]] && { echo "Hour is required."; return 1; }
 
     # Minute (with colored heading)
+    local min_default=""
+    [[ $PREFILL_DEFAULTS -eq 1 ]] && min_default="$cur_min"
     echo "$(gum style --foreground 63 --bold '[MINUTE]' --padding "0 1") — Minute (0-59, e.g. 05 = 5 min past) | $(gum style --foreground 226 --bold "Current: $cur_min")"
     local minute_input
-    minute_input=$(gum input --placeholder "Enter minute 0-59 (or blank to keep $cur_min)" --value "$cur_min" --width 30)
+    minute_input=$(gum input --placeholder "Enter minute 0-59 (required)" --value "$min_default" --width 30)
     status=$?
     if [[ $status -ne 0 ]]; then echo "Input cancelled."; return 1; fi
     minute_input=$(trim "$minute_input")
-    [[ -z "$minute_input" ]] && minute_input="$cur_min"
+    [[ -z "$minute_input" ]] && { echo "Minute is required."; return 1; }
 
     # Seconds (optional) — with skip button
     local cur_sec
@@ -173,7 +186,7 @@ manual_set_flow() {
     local sec_choice
     sec_choice=$(gum choose --header "Enter second or skip?" --cursor "> " \
         --unselected-prefix "  " --selected-prefix "  > " --height 4 \
-        "Enter value" "Skip — set to 00")
+        "Skip — set to 00" "Enter value")
     local sec_status=$?
     if [[ $sec_status -ne 0 ]]; then echo "Seconds skipped/cancelled."; return 1; fi
 
@@ -722,7 +735,7 @@ else
     fi
 fi
 
-# ------------------------------------------------------------------
+  # ------------------------------------------------------------------
 # Main entry
 # ------------------------------------------------------------------
 check_deps
