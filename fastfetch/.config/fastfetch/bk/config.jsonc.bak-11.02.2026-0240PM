@@ -1,0 +1,80 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  
+  "logo": {
+    "source": "arch",
+    "color": {
+                //"1": "magenta", // Primary Arch color to Mauve
+                // "2": "magenta"  // Secondary Arch color to Mauve
+
+                "1": "#cba6f7", // Primary Arch color to Mauve
+                "2": "#8787d4"  // Secondary Arch color to Mauve
+            }
+  },
+
+  "display": {
+        // "color": "magenta" // This is the standard "Mauve" equivalent in many terminal themes
+        "color": "#cba6f7" // hex = #cba6f7
+    },
+
+  "modules": [
+    "title",
+    "separator",
+    {
+        "type": "media",
+        "key": "󰝚 Media" // Nerd Font Icon
+        // "keyColor": "#cba6f7"
+    },
+    
+
+
+    "break",
+    
+    
+
+    "os",
+    "host",
+    "kernel",
+    {
+      "type": "uptime",
+      "format": "{1}d {2}h {3}m {4}s" // Displays uptime in hours, minutes, and seconds; from gemini 12.4.2025
+    },
+    // "uptime",
+    "packages",
+    "shell",
+    {
+            "type": "localip",
+            "key": "󰩟 Network",
+            "keyColor": "magenta"
+        },
+        "break",
+    "de", 
+    "wm",
+    "wmtheme",
+    "theme",
+    "icons",
+    "font",
+    "cursor",
+    "terminal",
+    "terminalfont",
+    
+
+
+    "break",
+    
+
+    
+    "cpu",
+    "gpu",
+    "memory",
+    "swap",
+    "disk",
+    "display",
+    "localip",
+    "battery",
+    "poweradapter",
+    "locale",
+    "break",
+    "colors"
+  ]
+}

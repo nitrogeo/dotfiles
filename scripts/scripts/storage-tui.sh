@@ -31,29 +31,50 @@ header() {
 
 header
 
-choice=$(gum choose \
-  --header "What do you want to clear?" \
-  --cursor.foreground 212 \
-  "Quick safe clean  — caches + dev (recommended)" \
-  "Caches only" \
-  "Dev / toolchain only" \
-  "Steam cache only (never games)" \
-  "Review only (list, deletes nothing)")
+# Grouped menu. `gum choose` only takes one --header, so the section titles are
+# ordinary rows marked with ─────. Picking one just redraws the menu; it never
+# becomes a --category value. Real actions are indented under their heading.
+main_menu() {
+  local h_review h_clean
+  h_review=$(gum style --bold --foreground 99 "review  ────────────────────────────")
+  h_clean=$(gum style --bold --foreground 99 "cleanup / clear  ───────────────────")
 
-# empty / Esc / Ctrl-C -> cancel cleanly
-choice="${choice//[[:space:]]/}"
-case "$choice" in
-  "" ) gum style --foreground 240 "Cancelled."; exit 0 ;;
-esac
+  gum choose \
+    --header "What do you want to do?" \
+    --cursor.foreground 212 \
+    --height 12 \
+    "$h_review" \
+    "  (og) Review only — list, deletes nothing" \
+    "  (new) Growth graph — not built yet" \
+    "$h_clean" \
+    "  Quick safe clean — caches + dev (recommended)" \
+    "  Caches only" \
+    "  Dev / toolchain only" \
+    "  Steam cache only (never games)"
+}
 
-case "$choice" in
-  Quick*) CATS=(caches dev) ;;
-  Caches*) CATS=(caches) ;;
-  Dev*) CATS=(dev) ;;
-  Steam*) CATS=(steam) ;;
-  Review*) CATS=(review) ;;
-  *) gum style --foreground 240 "Cancelled."; exit 0 ;;
-esac
+while :; do
+  # gum exits non-zero on Esc/Ctrl-C, so an empty result is a cancel either way
+  raw=$(main_menu) || { gum style --foreground 240 "Cancelled."; exit 0; }
+  [[ -z "${raw//[[:space:]]/}" ]] && { gum style --foreground 240 "Cancelled."; exit 0; }
+
+  # strip ANSI (headings are styled) then leading indent, so matching is plain text
+  choice=$(printf '%s' "$raw" | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g')
+  choice="${choice#"${choice%%[![:space:]]*}"}"
+
+  case "$choice" in
+    *──*)  continue ;;                          # heading row: reopen the menu
+    "(og) Review"*)        CATS=(review); break ;;
+    "(new) Growth graph"*)
+      gum style --foreground 240 "Growth graph is still a plan — docs/plan-self-service-cleaner.md"
+      continue ;;
+    "Quick safe clean"*)   CATS=(caches dev); break ;;
+    "Caches only"*)        CATS=(caches); break ;;
+    "Dev / toolchain"*)    CATS=(dev); break ;;
+    "Steam cache only"*)   CATS=(steam); break ;;
+    *) gum style --foreground 240 "Unrecognised choice — nothing done."; exit 0 ;;
+  esac
+done
 
 args=()
 for c in "${CATS[@]}"; do args+=(--category "$c"); done

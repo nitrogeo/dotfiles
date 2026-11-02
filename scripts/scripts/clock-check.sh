@@ -46,49 +46,63 @@ show_current() {
 # Main menu
 # ------------------------------------------------------------------
 main_menu() {
-    local header_box
-    header_box=$(gum style --foreground 226 --border-foreground 212 --border double \
-        --background 55 --align center --width 55 --padding "1 3" \
-        '  SYSTEM CLOCK FIX  ' '  (Gum TUI)  ')
-    echo "$header_box"
-    echo ""
-    show_current
-    echo ""
-
-    local choice
-    choice=$(gum choose --header "Select an action:" \
-        --cursor "> " --cursor-prefix "  " \
-        --unselected-prefix "  " --selected-prefix "  > " \
-        --height 5 \
-        "Set clock manually" "Test / preview only" "Exit")
-
-    local status=$?
-    if [[ $status -ne 0 ]]; then
-        # 130 = Ctrl+C (SIGINT), 1 = abort (Escape/etc for gum choose)
+    while true; do
+        local header_box
+        header_box=$(gum style --foreground 226 --border-foreground 212 --border double \
+            --background 55 --align center --width 55 --padding "1 3" \
+            '  SYSTEM CLOCK FIX  ' '  (Gum TUI)  ')
+        echo "$header_box"
         echo ""
-        echo "Cancelled. Exiting."
-        exit 0
-    fi
+        show_current
+        echo ""
 
-    case "$choice" in
-        "Set clock manually")
-            if [[ $DRY_RUN -eq 1 ]]; then
-                echo "[DRY-RUN] Manual set mode selected. No writes will occur."
-            fi
-            manual_set_flow
-            ;;
-        "Test / preview only")
-            dry_run_flow
-            ;;
-        "Exit")
-            echo "Exiting."
+        local choice
+        choice=$(gum choose --header "Select an action:" \
+            --cursor "> " --cursor-prefix "  " \
+            --unselected-prefix "  " --selected-prefix "  > " \
+            --height 5 \
+            "Set clock manually" "Test / preview only" "Exit")
+
+        local status=$?
+        if [[ $status -ne 0 ]]; then
+            # 130 = Ctrl+C (SIGINT), 1 = abort (Escape/etc for gum choose)
+            echo ""
+            echo "Cancelled. Exiting."
             exit 0
-            ;;
-        *)
-            echo "Unexpected selection. Exiting."
-            exit 1
-            ;;
-    esac
+        fi
+
+        case "$choice" in
+            "Set clock manually")
+                if [[ $DRY_RUN -eq 1 ]]; then
+                    echo "[DRY-RUN] Manual set mode selected. No writes will occur."
+                fi
+                # A skipped/cancelled field returns 1: report it and come back here
+                # instead of letting the script end.
+                if manual_set_flow; then
+                    return 0
+                fi
+                echo ""
+                echo "Returning to the main menu (nothing was changed)."
+                echo ""
+                ;;
+            "Test / preview only")
+                if dry_run_flow; then
+                    return 0
+                fi
+                echo ""
+                echo "Returning to the main menu (nothing was changed)."
+                echo ""
+                ;;
+            "Exit")
+                echo "Exiting."
+                exit 0
+                ;;
+            *)
+                echo "Unexpected selection. Exiting."
+                exit 1
+                ;;
+        esac
+    done
 }
 
 # ------------------------------------------------------------------
@@ -179,27 +193,29 @@ manual_set_flow() {
     minute_input=$(trim "$minute_input")
     [[ -z "$minute_input" ]] && { echo "Minute is required."; return 1; }
 
-    # Seconds (optional) — with skip button
-    local cur_sec
-    cur_sec=$(date '+%S')
-    echo "$(gum style --foreground 212 --bold '[SECONDS]' --padding "0 1") — Optional second (0-59) | $(gum style --foreground 226 --bold "Current: $cur_sec")"
-    local sec_choice
-    sec_choice=$(gum choose --header "Enter second or skip?" --cursor "> " \
-        --unselected-prefix "  " --selected-prefix "  > " --height 4 \
-        "Skip — set to 00" "Enter value")
-    local sec_status=$?
-    if [[ $sec_status -ne 0 ]]; then echo "Seconds skipped/cancelled."; return 1; fi
-
-    local second_input
-    if [[ "$sec_choice" == "Skip — set to 00" ]]; then
-        second_input="00"
-    else
-        second_input=$(gum input --placeholder "Enter second 0-59 (blank = 00)" --value "$cur_sec" --width 30)
-        status=$?
-        if [[ $status -ne 0 ]]; then echo "Seconds input cancelled."; return 1; fi
-        second_input=$(trim "$second_input")
-        [[ -z "$second_input" ]] && second_input="00"
-    fi
+    # Seconds (optional) — DISABLED (commented out on request). Seconds are always set to 00.
+    # The block is kept so it can be re-enabled without retyping; the validation below
+    # already falls back to 00 when second_input is unset.
+    # local cur_sec
+    # cur_sec=$(date '+%S')
+    # echo "$(gum style --foreground 212 --bold '[SECONDS]' --padding "0 1") — Optional second (0-59) | $(gum style --foreground 226 --bold "Current: $cur_sec")"
+    # local sec_choice
+    # sec_choice=$(gum choose --header "Enter second or skip?" --cursor "> " \
+    #     --unselected-prefix "  " --selected-prefix "  > " --height 4 \
+    #     "Skip — set to 00" "Enter value")
+    # local sec_status=$?
+    # if [[ $sec_status -ne 0 ]]; then echo "Seconds skipped/cancelled."; return 1; fi
+    #
+    # local second_input
+    # if [[ "$sec_choice" == "Skip — set to 00" ]]; then
+    #     second_input="00"
+    # else
+    #     second_input=$(gum input --placeholder "Enter second 0-59 (blank = 00)" --value "$cur_sec" --width 30)
+    #     status=$?
+    #     if [[ $status -ne 0 ]]; then echo "Seconds input cancelled."; return 1; fi
+    #     second_input=$(trim "$second_input")
+    #     [[ -z "$second_input" ]] && second_input="00"
+    # fi
 
     # AM/PM (with heading and current)
     echo "$(gum style --foreground 63 --bold '[AM/PM]' --padding "0 1") — AM or PM | $(gum style --foreground 226 --bold "Current: $cur_ampm")"
@@ -227,7 +243,7 @@ manual_set_flow() {
         # For simplicity with Gum input flow, we restart the manual flow but keep defaults.
         # A full per-field retry loop could be added; for maintainability we keep it simple here.
         manual_set_flow_retry "$month_input" "$day_input" "$year_input" "$hour_input" "$minute_input" "$norm_ampm"
-        return 0
+        return $?
     fi
 
     # Build canonical representation (12-hour internal for display; 24-hour for GNU date)
@@ -248,14 +264,17 @@ manual_set_flow() {
     local day_padded
     printf -v day_padded "%02d" "$day_input"
 
-    # Seconds: optional, 0-59 (blank = 00; validated separately)
+    # Seconds: optional, 0-59 (blank = 00; validated separately).
+    # Defaults to 00 when the [SECONDS] prompt block above is commented out or skipped,
+    # so this section stays safe under `set -u`.
+    local sec_value="${second_input:-00}"
     local sec_padded="00"
-    if [[ -n "$second_input" && "$second_input" != "00" ]]; then
-        if ! [[ "$second_input" =~ ^[0-9]+$ ]]; then
-            echo "Error: Seconds must be 0-59 if provided, got: $second_input"
+    if [[ -n "$sec_value" && "$sec_value" != "00" ]]; then
+        if ! [[ "$sec_value" =~ ^[0-9]+$ ]]; then
+            echo "Error: Seconds must be 0-59 if provided, got: $sec_value"
             return 1
         fi
-        local sec_num=$((10#$second_input))
+        local sec_num=$((10#$sec_value))
         if [[ $sec_num -lt 0 || $sec_num -gt 59 ]]; then
             echo "Error: Seconds must be 0-59, got: $sec_num"
             return 1
@@ -275,7 +294,7 @@ manual_set_flow() {
         echo "Intended: month=$month_input day=$day_input year=$year_input hour=$hour_24_padded minute=$minute_padded"
         echo ""
         manual_set_flow_retry "$month_input" "$day_input" "$year_input" "$hour_input" "$minute_input" "$norm_ampm"
-        return 0
+        return $?
     fi
 
     # Preview
@@ -381,7 +400,7 @@ manual_set_flow_prefilled() {
         echo ""
         echo "Still invalid after correction. Let's go back to the menu."
         manual_set_flow_retry "$month_input" "$day_input" "$year_input" "$hour_input" "$minute_input" "$norm_ampm"
-        return 0
+        return $?
     fi
 
     # Build and confirm same as main flow
@@ -402,7 +421,7 @@ manual_set_flow_prefilled() {
     if ! verify_gnu_date_matches "$date_string_24h" "$month_input" "$day_input" "$year_input" "$hour_24_padded" "$minute_padded"; then
         echo "Verification failed again. Back to menu."
         manual_set_flow_retry "$month_input" "$day_input" "$year_input" "$hour_input" "$minute_input" "$norm_ampm"
-        return 0
+        return $?
     fi
 
     preview_flow "$date_string_24h" "$norm_ampm"
@@ -707,7 +726,9 @@ dry_run_flow() {
     # For dry-run, we simulate the manual flow but skip apply.
     DRY_RUN=1
     manual_set_flow
+    local flow_status=$?
     DRY_RUN=0
+    return $flow_status
 }
 
 # ------------------------------------------------------------------

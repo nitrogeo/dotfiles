@@ -31,6 +31,12 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
+# Stamped format (: time:dur;cmd) must be on before anything reads the file,
+# otherwise a shell that never loads oh-my-zsh rewrites it without stamps.
+setopt EXTENDED_HISTORY
+# fcntl lock on history writes: two shells writing at once is what punches
+# NUL "holes" into $HISTFILE. Repair with dotfiles/scripts/scripts/zsh-history-fix.sh
+setopt HIST_FCNTL_LOCK
 
 HIST_STAMPS="mm/dd/yyyy"
 
@@ -85,8 +91,10 @@ alias clock-fix="~/scripts/school-time-fix.sh"
 
 # 10.13.2026
 alias trash-check="echo 'echoing \`du -sh ~/.local/share/Trash\`...' && echo '=====' && du -sh ~/.local/share/Trash" 
-
 alias clean-arch\="~/scripts/clean-arch.sh"
+
+# 10.31.2026
+alias storage="~/scripts/storage-tui.sh"
 
 
 # ############################## AUTOSUGGESTIONS #########################
