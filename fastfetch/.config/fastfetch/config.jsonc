@@ -2,86 +2,125 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
   
   "logo": {
-    "source": "arch",
-    "color": {
-                //"1": "magenta", // Primary Arch color to Mauve
-                // "2": "magenta"  // Secondary Arch color to Mauve
+	"source": "arch",
+	"color": {
+				//"1": "magenta", // Primary Arch color to Mauve
+				// "2": "magenta"  // Secondary Arch color to Mauve
 
-                "1": "#cba6f7", // Primary Arch color to Mauve
-                "2": "#8787d4"  // Secondary Arch color to Mauve
-            }
+				"1": "#cba6f7", // Primary Arch color to Mauve
+				"2": "#8787d4"  // Secondary Arch color to Mauve
+			}
   },
 
   "display": {
-        // "color": "magenta" // This is the standard "Mauve" equivalent in many terminal themes
-        "color": "#cba6f7" // hex = #cba6f7
-    },
+		// "color": "magenta" // This is the standard "Mauve" equivalent in many terminal themes
+		"color": {
+			"keys": "#cba6f7", // hex = #cba6f7
+			"title": "#ced6df",
+			"separator": "#666666"
+		},
+		
+		"separator": "  ",
+		"key": {
+		  "width": 12
+		}
+	},
 
   "modules": [
-    "title",
-    "separator",
+    { "type": "break"},
+
+	{
+		"type": "media",
+		"key": "󰝚  Media", // Nerd Font Icon
+		// "keyColor": "#cba6f7"
+		"format": "{artist:20} - {title} ~ {progress} ({progress-num}) [{status}]" // artist cut to 20 chars + "...", rest as before
+	},
+
+    { "type": "break"},
+
+    // software
+    { "type": "custom",   "key": "🖳 ", "format": "System & Software" },
+    { "type": "break" },
     {
-        "type": "media",
-        "key": "󰝚 Media", // Nerd Font Icon
-        // "keyColor": "#cba6f7"
-        "format": "{artist:20}... - {title} - {progress} ({progress-num}) [{status}]" // artist cut to 20 chars + "...", rest as before
+      "type": "os",
+      "key": "  OS",
+      "format": "{pretty-name} {arch}"
     },
-    
-
-
-    "break",
-    
-    
-
-
-    // ── Hardware ──
+	{
+	"type": "kernel",
+	"key": "  Kernel",
+	"format": "{release}"
+	},
     {
-        "type": "custom",
-        "format": "󰘚 Hardware"
+      "type": "uptime",
+      "key": "󰥔  Uptime"
     },
-    "host",
-    "cpu",
-    "memory",
-    "swap",
-    "gpu",
-    "disk",
-    "display",
-    "battery",
-    "poweradapter",
-
-
-    "break",
-
-
-    // ── Software ──
     {
-        "type": "custom",
-        "format": "󰣆 Software"
+      "type": "packages",
+      "key": "󰏖  Pkgs",
+      "format": "{pacman} pacman · {flatpak-all} flatpak"
     },
-    "os",
-    "kernel",
-    "de",
-    "wm",
-    "wmtheme",
-    "theme",
-    "icons",
-    "font",
-    "cursor",
-    "terminal",
-    "terminalfont",
-    "shell",
-    "uptime",
-    "packages",
-    {
-            "type": "localip",
-            "key": "󰩟 Network",
-            "keyColor": "magenta"
-        },
-    "localip",
-    "locale",
-
-
     "break",
-    "colors"
+    {
+      "type": "wm",
+      "key": "  WM",
+      "format": "{pretty-name} · {protocol-name}"
+    },
+    {
+      "type": "shell",
+      "key": "  Shell"
+    },
+    {
+      "type": "terminal",
+      "key": "  Term"
+    },
+    { "type": "break" }, { "type": "break" },
+
+
+
+	// hardware
+    { "type": "custom",   "key": "🖳 ", "format": "Hardware" },
+    { "type": "break" },
+
+    { "type": "host",     "key": "🖳  Host" }, // 🖥
+    {
+      "type": "cpu",
+      "key": "  CPU",
+      "format": "{name} · {cores-physical}C/{cores-logical}T"
+    },
+    {
+      "type": "gpu",
+      "key": "󰢮  GPU",
+      "hideType": "integrated",
+      "format": "{name}"
+    },
+    {
+      "type": "memory",
+      "key": "  RAM",
+      "format": "{used} / {total}"
+    },
+    {
+      "type": "disk",
+      "key": "󰋊  Disk",
+      "folders": "/",
+      "format": "{size-used} / {size-total}"
+    },
+    {
+      "type": "battery",
+      "key": "󰁹  Battery",
+      "format": "{capacity} · {status}"
+    },
+    { "type": "display",  "key": "󰍹  Monitor" },
+
+
+    { "type": "break" }, { "type": "break" },
+
+    // info
+    { "type": "custom",   "key": "🛈 ", "format": "Info" },
+    { "type": "break" },
+
+    { "type": "uptime",       "key": "⏻  Uptime" },
+    { "type": "terminalfont", "key": "🗛  Font" },
+    { "type": "localip",      "key": "🖧  LAN IP" }
   ]
 }
