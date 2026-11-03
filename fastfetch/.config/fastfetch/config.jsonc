@@ -29,14 +29,26 @@
   "modules": [
     { "type": "break"},
 
-	{
-		"type": "media",
-		"key": "󰝚  Media", // Nerd Font Icon
-		// "keyColor": "#cba6f7"
-		"format": "{artist:20} - {title} ~ {progress} ({progress-num}) [{status}]" // artist cut to 20 chars + "...", rest as before
-	},
+    // media
+    { "type": "custom",   "key": "󰝚 ", "format": "Media" },
+    { "type": "break" },
+  	{
+  		"type": "media",
+  		"key": "󰝚  Info ", // Nerd Font Icon
+  		// "keyColor": "#cba6f7"
+  		"format": "{artist:20} - {title}" // artist cut to 20 chars + "...", rest as before
+  	},
+    {
+      "type": "media",
+      "key": "󰝚  Status", // Nerd Font Icon
+      // "keyColor": "#cba6f7"
+      "format": "{progress} ({progress-num}) [{status}]"
+    },
 
-    { "type": "break"},
+    { "type": "break" }, { "type": "break" },
+
+
+
 
     // software
     { "type": "custom",   "key": "🖳 ", "format": "System & Software" },

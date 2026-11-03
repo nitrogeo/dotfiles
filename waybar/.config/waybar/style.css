@@ -88,6 +88,16 @@ window#waybar {
     padding: 0px 7px;
 }
 
+/* storage: icon only, click reveals free space (see config.jsonc) */
+#custom-storage {
+    color: @second-color; /* #abb5d7; neutral, distinct from cpu/memory/audio */
+    padding: 0px 7px;
+}
+#disk {
+    color: #e8b0bc;
+    padding: 0px 7px;
+}
+
 #tray {
     background-color: rgba(0,0,0,0); /* Transparent tray background */
     padding: 0px 7px;

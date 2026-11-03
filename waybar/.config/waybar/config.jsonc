@@ -19,7 +19,7 @@
 
   "modules-left": ["custom/archicon", "hyprland/workspaces", "hyprland/window"/*, "wlr/taskbar"*/],
   "modules-center": ["mpris"],
-  "modules-right": ["cpu", "memory", "pulseaudio", "battery", "network", "clock", "group/mini-tray", "custom/swaync"],
+  "modules-right": ["disk" /*"custom/storage"*/, "cpu", "memory", "pulseaudio", "battery", "network", "clock", "group/mini-tray", "custom/swaync"],
   
   
   "custom/archicon": {
@@ -133,6 +133,28 @@
     "format-alt": "   {used:0.1f}GB",
     "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
   },
+
+  /* 11.03.2026: storage / free space on "/" - icon only by default,
+     left click swaps to format-alt which adds the free amount
+     (same click-to-reveal pattern as pulseaudio's format-alt).
+     Script: ~/.config/waybar/scripts/storage.sh */
+  // "custom/storage": {
+  //   "exec": "/home/nitro/.config/waybar/scripts/storage.sh",
+  //   "return-type": "json",
+  //   "interval": 30,
+  //   "format": "{}",
+  //   "format-alt": "{}",
+  //   "format-alt-click": "click-left",
+  //   "tooltip": true
+  // },
+"disk": {
+    "path": "/",
+    "interval": 30,
+    "format": "",
+    "format-alt": "  {free}",
+    "tooltip": false
+},
+
 
   "clock": {
       "format": "󰃰  {:%a %b %d   |   %I:%M %p}",

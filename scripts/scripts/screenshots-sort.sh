@@ -40,7 +40,9 @@ while IFS= read -r -d '' file; do
     file_date="$(date -d "@$timestamp" +%Y-%m-%d)"
 
     # Skip today, yesterday, and 2 days ago.
-    if [[ "$file_date" >= "$cutoff_date" ]]; then
+    # Both dates are YYYY-MM-DD, so a string compare is a date compare.
+    # [[ ]] has no >= operator: use > or == instead.
+    if [[ "$file_date" == "$cutoff_date" || "$file_date" > "$cutoff_date" ]]; then
         continue
     fi
 

@@ -110,3 +110,8 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+
+# more idk 11.02.2026
+# Prevent Zsh from clearing the right prompt on execution
+setopt no_transient_rprompt
