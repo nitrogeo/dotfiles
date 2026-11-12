@@ -60,8 +60,8 @@ main_menu() {
         choice=$(gum choose --header "Select an action:" \
             --cursor "> " --cursor-prefix "  " \
             --unselected-prefix "  " --selected-prefix "  > " \
-            --height 5 \
-            "Set clock manually" "Test / preview only" "Exit")
+            --height 6 \
+            "Set clock manually" "Sync from internet (HTTP time)" "Test / preview only" "Exit")
 
         local status=$?
         if [[ $status -ne 0 ]]; then
@@ -79,6 +79,14 @@ main_menu() {
                 # A skipped/cancelled field returns 1: report it and come back here
                 # instead of letting the script end.
                 if manual_set_flow; then
+                    return 0
+                fi
+                echo ""
+                echo "Returning to the main menu (nothing was changed)."
+                echo ""
+                ;;
+            "Sync from internet (HTTP time)")
+                if http_sync_flow; then
                     return 0
                 fi
                 echo ""
@@ -729,6 +737,170 @@ dry_run_flow() {
     local flow_status=$?
     DRY_RUN=0
     return $flow_status
+}
+
+# ------------------------------------------------------------------
+# Internet time sync — HTTP Date header (same method as school-time-fix.sh)
+# ------------------------------------------------------------------
+# Google's reply headers always carry `Date:` in GMT, so the HTTP packet
+# itself is the time source. Works when NTP is off/blocked, which is the
+# whole point of the original script for this no-battery laptop.
+fetch_http_time() {
+    curl -fsSI --max-time 10 https://google.com 2>/dev/null \
+        | awk -F': ' 'tolower($1) == "date" {print $2}' \
+        | tr -d '\r'
+}
+
+# Turn a second count into "3m 12s behind" style text.
+# $1 is remote minus local: positive means the server is ahead, so the
+# local clock is the one running behind.
+format_drift() {
+    local diff="$1"
+    local abs=${diff#-}
+    local word="ahead"
+    [[ $diff -gt 0 ]] && word="behind"
+
+    if [[ $abs -lt 2 ]]; then
+        printf 'no measurable drift (under 2s)'
+    elif [[ $abs -lt 60 ]]; then
+        printf '%s second(s) %s' "$abs" "$word"
+    else
+        printf '%dm %02ds %s' $((abs / 60)) $((abs % 60)) "$word"
+    fi
+}
+
+http_sync_flow() {
+    if ! command -v curl >/dev/null 2>&1; then
+        local missing_box
+        missing_box=$(gum style --foreground 196 --border-foreground 196 --border rounded \
+            --width 62 --padding "1 2" \
+            'Cannot sync: curl is not installed.' \
+            'curl is what reads the time out of the HTTP reply.')
+        echo "$missing_box"
+        return 1
+    fi
+
+    echo ""
+    echo "Reading the time from google.com's HTTP Date header..."
+    local http_date
+    http_date=$(fetch_http_time)
+
+    if [[ -z "$http_date" ]]; then
+        local fail_box
+        fail_box=$(gum style --foreground 196 --border-foreground 196 --border rounded \
+            --width 62 --padding "1 2" \
+            'Fetch failed: no Date header came back.' \
+            'Check the internet connection, then try again.')
+        echo "$fail_box"
+        return 1
+    fi
+
+    # The raw header is what gets applied (exactly like school-time-fix.sh);
+    # the parsed forms below are only for showing the user what it means.
+    local remote_utc remote_local
+    if ! remote_utc=$(date -u -d "$http_date" '+%A, %B %d, %Y  %I:%M:%S %p UTC' 2>/dev/null); then
+        echo "Fetch failed: could not parse the server's Date header:"
+        echo "  $http_date"
+        return 1
+    fi
+    remote_local=$(date -d "$http_date" '+%A, %B %d, %Y  %I:%M %p %Z')
+
+    local remote_epoch local_epoch drift drift_text
+    remote_epoch=$(date -d "$http_date" +%s 2>/dev/null) || remote_epoch=0
+    local_epoch=$(date +%s)
+    drift=$((remote_epoch - local_epoch))
+    drift_text=$(format_drift "$drift")
+
+    echo ""
+    echo "Server time (UTC):    $remote_utc"
+    echo "Server time (local):  $remote_local"
+    echo "Your clock vs server: $drift_text"
+    echo ""
+
+    # Same informational NTP warning as the manual preview.
+    if command -v timedatectl >/dev/null 2>&1; then
+        local sync_status
+        sync_status=$(timedatectl show --property=NTP --value 2>/dev/null || echo "unknown")
+        echo "Time-sync (NTP) status: $sync_status"
+        if [[ "$sync_status" == "yes" || "$sync_status" == "active" ]]; then
+            local warn_box
+            warn_box=$(gum style --foreground 196 --border-foreground 196 --border rounded \
+                --width 62 --padding "1 2" \
+                'WARNING: NTP active — a manual change may be overwritten by time-sync.')
+            echo "$warn_box"
+        fi
+    fi
+
+    echo ""
+    local action
+    action=$(gum choose --header "Apply the internet time?" --cursor "> " \
+        --unselected-prefix "  " --selected-prefix "  > " --height 3 \
+        "Apply" "Cancel")
+    local status=$?
+    if [[ $status -ne 0 ]]; then
+        echo "Cancelled (escape/abort)."
+        return 1
+    fi
+
+    case "$action" in
+        "Apply")
+            if [[ $DRY_RUN -eq 1 ]]; then
+                echo "[DRY-RUN] Would apply the following (no actual writes):"
+                echo "  Command: sudo date -s \"$http_date\""
+                echo "  Command: sudo hwclock --systohc"
+                echo "[DRY-RUN] No clock-changing operations executed."
+                return 0
+            fi
+
+            echo "Applying internet time..."
+            echo "  sudo date -s \"$http_date\""
+            local output exit_code
+            output=$(sudo date -s "$http_date" 2>&1)
+            exit_code=$?
+            if [[ $exit_code -ne 0 ]]; then
+                echo ""
+                echo "ERROR: Setting system clock FAILED."
+                echo "Exit code: $exit_code"
+                echo "Output: $output"
+                echo "Hardware clock will NOT be updated (date failed)."
+                echo "Current time: $(date '+%A, %B %d, %Y  %I:%M %p %Z')"
+                return 1
+            fi
+            echo "System clock set successfully."
+            echo "Output: $output"
+
+            echo ""
+            echo "Synchronizing hardware clock (RTC)..."
+            echo "  sudo hwclock --systohc"
+            local hw_output hw_exit
+            hw_output=$(sudo hwclock --systohc 2>&1)
+            hw_exit=$?
+            if [[ $hw_exit -ne 0 ]]; then
+                echo "WARNING: Hardware clock update FAILED (partial success)."
+                echo "System clock was set, but RTC sync did not complete."
+                echo "Output: $hw_output"
+            else
+                echo "Hardware clock synchronized successfully."
+            fi
+
+            echo ""
+            local done_box
+            done_box=$(gum style --foreground 45 --border-foreground 45 --border rounded \
+                --align center --width 62 --padding "1 2" \
+                '  DONE  ' "  Clock synced from the HTTP Date header  " \
+                "  $(date '+%I:%M %p %Z, %b %d %Y')  ")
+            echo "$done_box"
+            return 0
+            ;;
+        "Cancel")
+            echo "Cancelled. No changes applied."
+            return 1
+            ;;
+        *)
+            echo "Unexpected action."
+            return 1
+            ;;
+    esac
 }
 
 # ------------------------------------------------------------------

@@ -149,7 +149,7 @@
   // },
 "disk": {
     "path": "/",
-    "interval": 30,
+    "interval": 3,
     "format": "",
     "format-alt": "  {free}",
     "tooltip": false

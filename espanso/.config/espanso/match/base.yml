@@ -212,3 +212,5 @@ matches:
     replace: "http://192.168.1.154:"
   - trigger: "//tsurl"
     replace: "http://nebulon.tail6fbab9.ts.net:"
+  - trigger: "//miltip"
+    replace: "http://192.168.4.131:"

@@ -26,8 +26,8 @@
 #
 #  Categories:
 #    caches   yay/Spotify/VS Code VSIX, Slack/Discord/Obsidian, browser caches
-#    dev      Zed old agents/builds/copilot, Codex old releases, Cargo, Go
-#    steam    obsolete runtime + Steam HTML/app cache (NOT games)
+#    dev      Zed old agents/language servers/builds/copilot, Codex old releases, Cargo, Go
+#    steam    obsolete runtime, HTML/app cache, downloaded runtime packages (NOT games)
 #    system   journal, paccache, flatpak unused (needs --system / sudo)
 #    trash    empty ~/.local/share/Trash (explicit only)
 #    review   list big user-data candidates; deletes NOTHING
@@ -283,19 +283,45 @@ do_caches() {
   fi
 }
 
+# prune_zed_agents AGENT ROOT...
+# Keeps only the newest v_* version across all given roots (Zed downloads a new
+# binary per update and never removes the old ones), deletes the rest.
+prune_zed_agents() {
+  local agent="$1"; shift
+  local newest="" d
+  while IFS= read -r d; do
+    [[ -n "$d" ]] || continue
+    if [[ -z "$newest" ]] || \
+       [[ "$(printf '%s\n%s\n' "$(basename "$d")" "$newest" | sort -V | tail -1)" == "$(basename "$d")" ]]; then
+      newest="$(basename "$d")"
+    fi
+  done < <(find "$@" -mindepth 1 -maxdepth 1 -type d -name 'v_*' -printf '%p\n' 2>/dev/null)
+
+  [[ -n "$newest" ]] || return 0
+  while IFS= read -r d; do
+    [[ -e "$d" ]] || continue
+    [[ "$(basename "$d")" == "$newest" ]] && continue
+    remove_path REBUILDABLE "old Zed $agent agent $(basename "$d")" "$d" 0
+  done < <(find "$@" -mindepth 1 -maxdepth 1 -type d -name 'v_*' -printf '%p\n' 2>/dev/null)
+}
+
 do_dev() {
   section "DEV / TOOLCHAIN CACHES"
 
-  local reg="$HOME/.local/share/zed/external_agents/registry/opencode" keep d
-  if [[ -d "$reg" ]]; then
-    keep=$(find "$reg" -mindepth 1 -maxdepth 1 -type d -name 'v_*' -printf '%f\n' 2>/dev/null | sort -V | tail -1)
-    [[ -n "$keep" ]] || return 0
-    for d in "$reg"/v_*; do
-      [[ -e "$d" ]] || continue
-      [[ "$(basename "$d")" == "$keep" ]] && continue
-      remove_path REBUILDABLE "old Zed opencode agent $(basename "$d")" "$d" 0
-    done
-  fi
+  # Both Zed layouts: the current one (registry/) and the legacy one
+  # (external_agents/<agent>/<agent>/). Keep only the newest binary overall.
+  local zed_agents="$HOME/.local/share/zed/external_agents"
+  prune_zed_agents opencode \
+    "$zed_agents/registry/opencode" \
+    "$zed_agents/opencode/opencode"
+  prune_zed_agents github-copilot-cli \
+    "$zed_agents/registry/github-copilot-cli" \
+    "$zed_agents/github-copilot-cli/github-copilot-cli"
+
+  # Downloaded language servers: re-fetched the next time a file of that
+  # language is opened. Safe to drop on a full disk.
+  remove_contents REBUILDABLE "Zed language servers (re-download on demand)" \
+    "$HOME/.local/share/zed/languages" 0
 
   remove_contents REBUILDABLE "Zed extension build cache" "$HOME/.local/share/zed/extensions/work" 0
   remove_path     REBUILDABLE "Zed Copilot cache" "$HOME/.local/share/zed/copilot" 0
@@ -343,6 +369,10 @@ do_steam() {
   remove_path     SAFE "Steam obsolete runtime" "$HOME/.local/share/Steam/ubuntu12_32/steam-runtime.old" 0
   remove_contents SAFE "Steam HTML cache" "$HOME/.local/share/Steam/config/htmlcache" 0
   remove_contents SAFE "Steam app cache" "$HOME/.local/share/Steam/appcache" 0
+  # Downloaded runtime manifest zips and patches; Steam re-downloads what it
+  # needs on the next launch. Installed runtimes live elsewhere and stay.
+  remove_contents REBUILDABLE "Steam downloaded runtime packages (re-download)" \
+    "$HOME/.local/share/Steam/package" 0
   note "Games, compatdata and workshop content are NOT touched."
 }
 
@@ -469,8 +499,8 @@ if (( LIST_ONLY )); then
   cat <<'EOF'
 Categories:
   caches   yay/Spotify/VS Code VSIX, Slack/Discord/Obsidian, browser caches
-  dev      Zed old agents/builds/copilot, Codex old releases, Cargo, Go
-  steam    obsolete runtime + Steam HTML/app cache (NOT games)
+  dev      Zed old agents/language servers/builds/copilot, Codex old releases, Cargo, Go
+  steam    obsolete runtime, HTML/app cache, downloaded runtime packages (NOT games)
   system   journal, paccache, flatpak unused (needs --system / sudo)
   trash    empty ~/.local/share/Trash (explicit only)
   review   list big user-data candidates; deletes NOTHING
